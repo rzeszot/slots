@@ -19,6 +19,7 @@ public extension View {
 }
 
 public extension View {
+    @inlinable
     func construct(for type: (some Hashable).Type, @ViewBuilder constructor: @escaping () -> some View) -> some View {
         construct(for: type) { _ in
             constructor()

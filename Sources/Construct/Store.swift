@@ -12,7 +12,7 @@ struct Store {
         self.init(constructors: [:])
     }
 
-    func find<T: Hashable>(_ type: T.Type) -> ((T) -> some View)? {
+    func find<T: Hashable>(_: T.Type) -> ((T) -> some View)? {
         constructors[ObjectIdentifier(T.self)]
     }
 
