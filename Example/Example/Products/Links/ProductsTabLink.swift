@@ -1,3 +1,3 @@
 import Foundation
 
-struct ProductsTabLink: Hashable {}
+struct ProductsTabLink {}

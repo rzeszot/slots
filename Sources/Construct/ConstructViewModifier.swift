@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConstructViewModifier<T: Hashable, C: View>: ViewModifier {
+struct ConstructViewModifier<T, C: View>: ViewModifier {
     let constructor: (T) -> C
 
     @Environment(\.store)
@@ -13,14 +13,14 @@ struct ConstructViewModifier<T: Hashable, C: View>: ViewModifier {
 }
 
 public extension View {
-    func construct<T: Hashable>(for _: T.Type, @ViewBuilder constructor: @escaping (T) -> some View) -> some View {
+    func construct<T>(for _: T.Type, @ViewBuilder constructor: @escaping (T) -> some View) -> some View {
         modifier(ConstructViewModifier(constructor: constructor))
     }
 }
 
 public extension View {
     @inlinable
-    func construct(for type: (some Hashable).Type, @ViewBuilder constructor: @escaping () -> some View) -> some View {
+    func construct(for type: (some Any).Type, @ViewBuilder constructor: @escaping () -> some View) -> some View {
         construct(for: type) { _ in
             constructor()
         }

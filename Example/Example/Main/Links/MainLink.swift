@@ -1,3 +1,3 @@
 import Foundation
 
-struct MainLink: Hashable {}
+struct MainLink {}

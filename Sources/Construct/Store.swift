@@ -2,9 +2,9 @@ import SwiftUI
 
 @MainActor
 struct Store {
-    let constructors: [ObjectIdentifier: (any Hashable) -> AnyView]
+    let constructors: [ObjectIdentifier: (Any) -> AnyView]
 
-    private init(constructors: [ObjectIdentifier: (any Hashable) -> AnyView]) {
+    private init(constructors: [ObjectIdentifier: (Any) -> AnyView]) {
         self.constructors = constructors
     }
 
@@ -12,13 +12,13 @@ struct Store {
         self.init(constructors: [:])
     }
 
-    func find<T: Hashable>(_: T.Type) -> ((T) -> some View)? {
+    func find<T>(_: T.Type) -> ((T) -> some View)? {
         constructors[ObjectIdentifier(T.self)]
     }
 
-    func construct<T: Hashable>(_ type: T.Type, @ViewBuilder with constructor: @escaping (T) -> some View) -> Self {
+    func construct<T>(_ type: T.Type, @ViewBuilder with constructor: @escaping (T) -> some View) -> Self {
         let new = [
-            ObjectIdentifier(T.self): { (value: any Hashable) in
+            ObjectIdentifier(T.self): { (value: Any) in
                 AnyView(constructor(value as! T))
             },
         ]

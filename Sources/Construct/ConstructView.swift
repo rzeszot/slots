@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct ConstructView<T: Hashable>: View {
+public struct ConstructView<T>: View {
     private let object: T
 
     @Environment(\.store)

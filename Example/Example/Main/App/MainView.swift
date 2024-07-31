@@ -2,7 +2,7 @@ import Construct
 import SwiftUI
 
 struct MainView: View {
-    enum Child: Hashable {
+    enum Child {
         case products
         case bag
     }
