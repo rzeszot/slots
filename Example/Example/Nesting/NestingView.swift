@@ -62,6 +62,12 @@ struct NestingView: View {
                     ConstructView(for: NestingPlaceholderBeta())
                     ConstructView(for: NestingPlaceholderGamma())
                 }
+                .if(child == .gamma) { view in
+                    view
+                        .construct(for: NestingPlaceholderGamma.self) {
+                            Text(verbatim: "gamma override")
+                        }
+                }
                 .if(child.defined.contains(.root)) { view in
                     view
                         .construct(for: NestingPlaceholderRoot.self) {
