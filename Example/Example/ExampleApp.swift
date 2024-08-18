@@ -12,6 +12,8 @@ struct ExampleApp: App {
                         ConstructView(for: ProductsPlaceholder.list)
                     case .bag:
                         ConstructView(for: BagPlaceholder())
+                    case .nesting:
+                        NestingView()
                     }
                 }
                 .construct(for: ProductsPlaceholder.self) { placeholder in

@@ -20,6 +20,7 @@
 		2D8487FA2C594278007AADA5 /* Construct in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8487F92C594278007AADA5 /* Construct */; };
 		2D8488022C59444F007AADA5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8488012C59444F007AADA5 /* RootView.swift */; };
 		2D8488062C5944A3007AADA5 /* MainPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8488052C5944A3007AADA5 /* MainPlaceholder.swift */; };
+		2DC4FE402C722EB5008D5D4F /* NestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC4FE3F2C722EB3008D5D4F /* NestingView.swift */; };
 		2DDAD4D32C547D4300DFF03F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAD4D22C547D4300DFF03F /* ExampleApp.swift */; };
 		2DDAD4D52C547D4300DFF03F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAD4D42C547D4300DFF03F /* MainView.swift */; };
 		2DDAD4D72C547D4400DFF03F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DDAD4D62C547D4400DFF03F /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		2D8487F72C59425A007AADA5 /* construct */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = construct; path = ..; sourceTree = "<group>"; };
 		2D8488012C59444F007AADA5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		2D8488052C5944A3007AADA5 /* MainPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlaceholder.swift; sourceTree = "<group>"; };
+		2DC4FE3F2C722EB3008D5D4F /* NestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestingView.swift; sourceTree = "<group>"; };
 		2DDAD4CF2C547D4300DFF03F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDAD4D22C547D4300DFF03F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		2DDAD4D42C547D4300DFF03F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		2DC4FE3E2C722EA0008D5D4F /* Nesting */ = {
+			isa = PBXGroup;
+			children = (
+				2DC4FE3F2C722EB3008D5D4F /* NestingView.swift */,
+			);
+			path = Nesting;
+			sourceTree = "<group>";
+		};
 		2DDAD4C62C547D4300DFF03F = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		2DDAD4D12C547D4300DFF03F /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				2DC4FE3E2C722EA0008D5D4F /* Nesting */,
 				2D8488002C594449007AADA5 /* Root */,
 				2D8487FB2C59434D007AADA5 /* Main */,
 				2D1D023E2C5482E000A1DE93 /* Products */,
@@ -245,6 +256,7 @@
 				2D1D02492C54859600A1DE93 /* ProductsPlaceholder.swift in Sources */,
 				2D1D023D2C5482D300A1DE93 /* ProductRepository.swift in Sources */,
 				2D5C40452C72037500762961 /* ProductsLink.swift in Sources */,
+				2DC4FE402C722EB5008D5D4F /* NestingView.swift in Sources */,
 				2DDAD4D52C547D4300DFF03F /* MainView.swift in Sources */,
 				2D1D02332C547FF500A1DE93 /* BagView.swift in Sources */,
 				2D1D02372C54829B00A1DE93 /* ProductsListView.swift in Sources */,
