@@ -14,7 +14,7 @@ struct ExampleApp: App {
                 .construct(for: ProductDetailsLink.self) { link in
                     ProductDetailsView(product: link.product)
                 }
-                .construct(for: BagLink.self) {
+                .construct(for: BagPlaceholder.self) {
                     BagView()
                 }
                 .construct(for: MainLink.self) {

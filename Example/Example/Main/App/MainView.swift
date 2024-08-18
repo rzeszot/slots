@@ -16,7 +16,7 @@ struct MainView: View {
                     Label("Products", systemImage: "laptopcomputer.and.iphone")
                 }
                 .tag(Child.products)
-            ConstructView(for: BagLink())
+            ConstructView(for: BagPlaceholder())
                 .tabItem {
                     Label("Bag", systemImage: "bag")
                 }
