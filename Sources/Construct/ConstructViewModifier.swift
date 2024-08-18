@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct ConstructViewModifier<T, C: View>: ViewModifier {
-    let constructor: (T) -> C
+struct ConstructViewModifier<T: Sendable, C: View>: ViewModifier {
+    let constructor: @Sendable (T) -> C
 
     @Environment(\.store)
     var store
@@ -13,14 +13,14 @@ struct ConstructViewModifier<T, C: View>: ViewModifier {
 }
 
 public extension View {
-    func construct<T>(for _: T.Type, @ViewBuilder constructor: @escaping (T) -> some View) -> some View {
+    func construct<T: Sendable>(for _: T.Type, @ViewBuilder constructor: @Sendable @escaping (T) -> some View) -> some View {
         modifier(ConstructViewModifier(constructor: constructor))
     }
 }
 
 public extension View {
     @inlinable
-    func construct(for type: (some Any).Type, @ViewBuilder constructor: @escaping () -> some View) -> some View {
+    func construct<T: Sendable>(for type: T.Type, @ViewBuilder constructor: @Sendable @escaping () -> some View) -> some View {
         construct(for: type) { _ in
             constructor()
         }

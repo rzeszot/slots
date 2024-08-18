@@ -1,10 +1,9 @@
 import SwiftUI
 
-@MainActor
-struct Store {
-    let constructors: [ObjectIdentifier: (Any) -> AnyView]
+struct Store: Sendable {
+    private let constructors: [ObjectIdentifier: @Sendable (Any) -> AnyView]
 
-    private init(constructors: [ObjectIdentifier: (Any) -> AnyView]) {
+    private init(constructors: [ObjectIdentifier: @Sendable (Any) -> AnyView]) {
         self.constructors = constructors
     }
 
@@ -16,10 +15,10 @@ struct Store {
         constructors[ObjectIdentifier(T.self)]
     }
 
-    func construct<T>(_ type: T.Type, @ViewBuilder with constructor: @escaping (T) -> some View) -> Self {
+    func construct<T>(_ type: T.Type, @ViewBuilder with constructor: @Sendable @escaping (T) -> some View) -> Self {
         let new = [
-            ObjectIdentifier(T.self): { (value: Any) in
-                AnyView(constructor(value as! T))
+            ObjectIdentifier(T.self): { @Sendable (value: Any) in
+                return AnyView(constructor(value as! T))
             },
         ]
 
