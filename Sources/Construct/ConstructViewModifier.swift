@@ -3,12 +3,11 @@ import SwiftUI
 struct ConstructViewModifier<T, C: View>: ViewModifier {
     let constructor: @Sendable (T) -> C
 
-    @Environment(\.store)
-    var store
-
     func body(content: Content) -> some View {
         content
-            .environment(\.store, store.construct(T.self, with: constructor))
+            .transformEnvironment(\.store) { store in
+                store.construct(T.self, with: constructor)
+            }
     }
 }
 
