@@ -1,5 +1,6 @@
 import Foundation
 
-enum ProductsPlaceholder {
+enum ProductsPlaceholder: Hashable {
     case list
+    case details(Product)
 }

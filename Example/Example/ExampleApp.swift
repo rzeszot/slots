@@ -12,10 +12,9 @@ struct ExampleApp: App {
                     switch placeholder {
                     case .list:
                         ProductsListView()
+                    case let .details(product):
+                        ProductDetailsView(product: product)
                     }
-                }
-                .construct(for: ProductDetailsLink.self) { link in
-                    ProductDetailsView(product: link.product)
                 }
                 .construct(for: BagPlaceholder.self) {
                     BagView()
