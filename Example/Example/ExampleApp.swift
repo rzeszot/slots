@@ -1,26 +1,29 @@
 import SwiftUI
+import Construct
 
 @main
 struct ExampleApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .construct(for: ProductsTabLink.self) {
-                    ProductsView()
+                .construct(for: MainPlaceholder.self) { placeholder in
+                    switch placeholder {
+                    case .products:
+                        ConstructView(for: ProductsPlaceholder.list)
+                    case .bag:
+                        ConstructView(for: BagPlaceholder())
+                    }
                 }
                 .construct(for: ProductsPlaceholder.self) { placeholder in
                     switch placeholder {
                     case .list:
-                        ProductsListView()
+                        ProductsView()
                     case let .details(product):
                         ProductDetailsView(product: product)
                     }
                 }
                 .construct(for: BagPlaceholder.self) {
                     BagView()
-                }
-                .construct(for: MainLink.self) {
-                    MainView()
                 }
         }
     }

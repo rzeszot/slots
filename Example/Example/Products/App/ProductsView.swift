@@ -7,9 +7,12 @@ struct ProductsView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            ConstructView(for: ProductsPlaceholder.list)
-                .navigationDestination(for: ProductsPlaceholder.self) { link in
-                    ConstructView(for: link)
+            ProductsListView()
+                .navigationDestination(for: ProductsLink.self) { link in
+                    switch link {
+                    case let .details(product):
+                        ProductDetailsView(product: product)
+                    }
                 }
         }
         .environmentObject(repository)

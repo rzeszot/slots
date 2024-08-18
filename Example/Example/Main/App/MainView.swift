@@ -11,17 +11,17 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $active) {
-            ConstructView(for: ProductsTabLink())
+            ConstructView(for: MainPlaceholder.products)
                 .tabItem {
                     Label("Products", systemImage: "laptopcomputer.and.iphone")
                 }
                 .tag(Child.products)
-            ConstructView(for: BagPlaceholder())
+            ConstructView(for: MainPlaceholder.bag)
                 .tabItem {
                     Label("Bag", systemImage: "bag")
                 }
                 .tag(Child.bag)
-            ConstructView(for: 4)
+            ConstructView(for: 42)
                 .tabItem {
                     Label("Missing", systemImage: "lightbulb.min.badge.exclamationmark")
                 }
