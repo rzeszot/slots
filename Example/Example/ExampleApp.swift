@@ -8,8 +8,11 @@ struct ExampleApp: App {
                 .construct(for: ProductsTabLink.self) {
                     ProductsView()
                 }
-                .construct(for: ProductsLink.self) {
-                    ProductsListView()
+                .construct(for: ProductsPlaceholder.self) { placeholder in
+                    switch placeholder {
+                    case .list:
+                        ProductsListView()
+                    }
                 }
                 .construct(for: ProductDetailsLink.self) { link in
                     ProductDetailsView(product: link.product)

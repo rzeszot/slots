@@ -1,3 +1,5 @@
 import Foundation
 
-struct ProductsLink {}
+enum ProductsPlaceholder {
+    case list
+}

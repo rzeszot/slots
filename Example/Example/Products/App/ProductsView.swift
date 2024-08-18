@@ -7,7 +7,7 @@ struct ProductsView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            ConstructView(for: ProductsLink())
+            ConstructView(for: ProductsPlaceholder.list)
                 .navigationDestination(for: ProductDetailsLink.self) { link in
                     ConstructView(for: link)
                 }
