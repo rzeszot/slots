@@ -1,29 +1,19 @@
 import SwiftUI
 
-struct Store: Sendable {
-    private let constructors: [ObjectIdentifier: @Sendable (Any) -> AnyView]
+typealias Store = [ObjectIdentifier: (Any) -> AnyView]
 
-    private init(constructors: [ObjectIdentifier: @Sendable (Any) -> AnyView]) {
-        self.constructors = constructors
+extension Store {
+    func find<D>(_ type: D.Type) -> ((Any) -> AnyView)? {
+        self[ObjectIdentifier(type)]
     }
 
-    init() {
-        self.init(constructors: [:])
-    }
-
-    func find<T>(_: T.Type) -> ((T) -> some View)? {
-        constructors[ObjectIdentifier(T.self)]
-    }
-
-    func construct<T>(_ type: T.Type, @ViewBuilder with constructor: @Sendable @escaping (T) -> some View) -> Self {
+    func appending<D>(_ type: D.Type, with block: @escaping (D) -> some View) -> Self {
         let new = [
-            ObjectIdentifier(T.self): { @Sendable (value: Any) in
-                return AnyView(constructor(value as! T))
-            },
+            ObjectIdentifier(type): { (value: Any) in
+                AnyView(block(value as! D))
+            }
         ]
 
-        return Store(
-            constructors: constructors.merging(new) { $1 }
-        )
+        return self.merging(new) { $1 }
     }
 }
