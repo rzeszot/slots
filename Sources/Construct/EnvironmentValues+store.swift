@@ -1,5 +1,16 @@
 import SwiftUI
 
 extension EnvironmentValues {
-    @Entry var store: Store = [:]
+    private struct StoreKey: EnvironmentKey {
+        static let defaultValue: Store = [:]
+    }
+
+    var store: Store {
+        get {
+            self[StoreKey.self]
+        }
+        set {
+            self[StoreKey.self] = newValue
+        }
+    }
 }

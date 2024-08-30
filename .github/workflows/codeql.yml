@@ -2,15 +2,13 @@ name: "CodeQL"
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   analyze:
-    name: Analyze (swift)
+    name: Analyze
     runs-on: macos-latest
     permissions:
       security-events: write
@@ -21,8 +19,8 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: swift
-        build-mode: autobuild
+    - name: Build
+      run: |
+        swift build
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:swift"
