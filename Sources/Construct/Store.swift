@@ -8,12 +8,14 @@ extension Store {
     }
 
     func appending<D>(_ type: D.Type, with block: @escaping (D) -> some View) -> Self {
-        let new = [
-            ObjectIdentifier(type): { (value: Any) in
-                AnyView(block(value as! D))
-            }
-        ]
+        var copy = self
+        copy[ObjectIdentifier(type)] = { (value: Any) in
+            AnyView(block(value as! D))
+        }
+        return copy
+    }
 
-        return self.merging(new) { $1 }
+    static var empty: Store {
+        [:]
     }
 }

@@ -3,7 +3,7 @@ import SwiftUI
 extension EnvironmentValues {
     private struct StoreKey: EnvironmentKey {
         static var defaultValue: Store {
-            [:]
+            .empty
         }
     }
 
