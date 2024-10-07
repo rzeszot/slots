@@ -1,21 +1,25 @@
 import SwiftUI
 
-typealias Store = [ObjectIdentifier: (Any) -> AnyView]
+struct Store {
+    private var data: [ObjectIdentifier: (Any) -> AnyView]
 
-extension Store {
+    private init(data: [ObjectIdentifier: (Any) -> AnyView]) {
+        self.data = data
+    }
+
     func find<D>(_ type: D.Type) -> ((Any) -> AnyView)? {
-        self[ObjectIdentifier(type)]
+        data[ObjectIdentifier(type)]
     }
 
     func appending<D>(_ type: D.Type, with block: @escaping (D) -> some View) -> Self {
-        var copy = self
+        var copy = data
         copy[ObjectIdentifier(type)] = { (value: Any) in
             AnyView(block(value as! D))
         }
-        return copy
+        return Store(data: copy)
     }
 
     static var empty: Store {
-        [:]
+        .init(data: [:])
     }
 }
