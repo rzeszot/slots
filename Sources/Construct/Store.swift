@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Store {
-    private var data: [ObjectIdentifier: (Any) -> AnyView]
+    let data: [ObjectIdentifier: (Any) -> AnyView]
 
     private init(data: [ObjectIdentifier: (Any) -> AnyView]) {
         self.data = data
