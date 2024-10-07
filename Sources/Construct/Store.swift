@@ -1,19 +1,31 @@
 import SwiftUI
 
-typealias Store = [ObjectIdentifier: (Any) -> AnyView]
+struct Store {
+    let data: [ObjectIdentifier: (Any) -> AnyView]
 
-extension Store {
-    func find<D>(_ type: D.Type) -> ((Any) -> AnyView)? {
-        self[ObjectIdentifier(type)]
+    private init(data: [ObjectIdentifier: (Any) -> AnyView]) {
+        self.data = data
+    }
+
+    func find<D>(_ type: D.Type) -> ((D) -> AnyView)? {
+        guard let block = data[ObjectIdentifier(type)] else {
+            return nil
+        }
+
+        return { parameter in
+            block(parameter)
+        }
     }
 
     func appending<D>(_ type: D.Type, with block: @escaping (D) -> some View) -> Self {
-        let new = [
-            ObjectIdentifier(type): { (value: Any) in
-                AnyView(block(value as! D))
-            }
-        ]
+        var copy = data
+        copy[ObjectIdentifier(type)] = { (value: Any) in
+            AnyView(block(value as! D))
+        }
+        return Store(data: copy)
+    }
 
-        return self.merging(new) { $1 }
+    static var empty: Store {
+        .init(data: [:])
     }
 }
