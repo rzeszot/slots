@@ -7,8 +7,14 @@ struct Store {
         self.data = data
     }
 
-    func find<D>(_ type: D.Type) -> ((Any) -> AnyView)? {
-        data[ObjectIdentifier(type)]
+    func find<D>(_ type: D.Type) -> ((D) -> AnyView)? {
+        guard let block = data[ObjectIdentifier(type)] else {
+            return nil
+        }
+
+        return { parameter in
+            block(parameter)
+        }
     }
 
     func appending<D>(_ type: D.Type, with block: @escaping (D) -> some View) -> Self {
