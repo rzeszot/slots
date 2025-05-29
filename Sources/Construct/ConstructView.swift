@@ -1,18 +1,18 @@
 import SwiftUI
 
 public struct ConstructView<T>: View {
-    private let object: T
+    private let value: T
 
     @Environment(\.store)
     private var store
 
-    public init(for object: T) {
-        self.object = object
+    public init(for value: T) {
+        self.value = value
     }
 
     public var body: some View {
         if let builder = store.find(T.self) {
-            builder(object)
+            builder(value)
         } else {
             missing
         }
