@@ -24,3 +24,14 @@ public struct ConstructView<T>: View {
             .foregroundStyle(.yellow)
     }
 }
+
+#Preview {
+    ConstructView(for: 42)
+}
+
+#Preview {
+    ConstructView(for: 42)
+        .construct(for: Int.self) { value in
+            Text("Int(\(value))")
+        }
+}
