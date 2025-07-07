@@ -28,6 +28,30 @@ struct ErrorView: View {
     }
 }
 
+nonisolated extension ErrorView {
+    static func cast(to type: Any.Type) -> Self {
+        ErrorView(
+            title: Text("Fatal Error"),
+            message: Text("Cannot cast to type: ") + Text("\(type)").bold()
+        )
+    }
+
+    static func missing(for type: Any.Type) -> Self {
+        ErrorView(
+            title: Text("Fatal Error"),
+            message: Text("No builder for symbol: ") + Text("\(type)").bold()
+        )
+    }
+}
+
+#Preview {
+    ErrorView.cast(to: Int.self)
+}
+
+#Preview {
+    ErrorView.missing(for: Int.self)
+}
+
 #Preview {
     ErrorView(
         title: Text("Lorem ipsum"),
