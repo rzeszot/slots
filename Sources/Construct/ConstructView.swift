@@ -14,14 +14,8 @@ public struct ConstructView<T>: View {
         if let builder = store.find(T.self) {
             builder(value)
         } else {
-            missing
+            MissingView(type: T.self)
         }
-    }
-
-    @ViewBuilder
-    var missing: some View {
-        Image(systemName: "exclamationmark.triangle.fill")
-            .foregroundStyle(.yellow)
     }
 }
 
