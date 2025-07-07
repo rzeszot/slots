@@ -8,9 +8,7 @@ public extension View {
             }
         }
     }
-}
 
-public extension View {
     @inlinable
     nonisolated func construct(for type: (some Any).Type, @ViewBuilder constructor: @escaping () -> some View) -> some View {
         construct(for: type) { _ in
