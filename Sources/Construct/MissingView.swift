@@ -3,31 +3,25 @@ import SwiftUI
 struct MissingView: View {
     let type: Any.Type
 
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.yellow)
-                .font(.system(size: 32))
+    var title: Text {
+        Text("Missing View Builder")
+    }
 
-            Text("Missing View Builder")
-                .font(.headline)
-            VStack {
-                Text("No view builder found for type:")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                Text(String(describing: type))
-                    .font(.caption.bold())
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .padding()
+    var message: Text {
+        Text("No view builder found for type: ")
+        + Text(String(describing: type))
+            .fontWeight(.bold)
+    }
+
+    var body: some View {
+        ErrorView(title: title, message: message)
     }
 }
 
 #Preview {
     MissingView(type: Int.self)
+}
+
+#Preview {
+    MissingView(type: String.self)
 }
