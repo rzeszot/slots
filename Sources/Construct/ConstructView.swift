@@ -13,8 +13,10 @@ public struct ConstructView<T>: View {
     public var body: some View {
         if let builder = store[T.self] {
             builder(value)
+        } else if let value = value as? MissingSymbol {
+            ErrorView.missing(for: value.type)
         } else {
-            MissingView(type: T.self)
+            ConstructView<MissingSymbol>(for: MissingSymbol(type: T.self))
         }
     }
 }
