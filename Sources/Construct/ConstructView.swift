@@ -11,7 +11,7 @@ public struct ConstructView<T>: View {
     }
 
     public var body: some View {
-        if let builder = store.find(T.self) {
+        if let builder = store[T.self] {
             builder(value)
         } else {
             MissingView(type: T.self)
