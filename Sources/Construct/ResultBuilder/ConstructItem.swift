@@ -14,19 +14,19 @@ public struct ConstructItem: ConstructContent {
 }
 
 public extension ConstructItem {
-    init<T>(for type: T.Type, @ViewBuilder block: @escaping (T) -> some View) {
-        self.init(symbol: Symbol(type), block: Block(block))
+    init<T>(for symbol: T.Type, @ViewBuilder block: @escaping (_ symbol: T) -> some View) {
+        self.init(symbol: Symbol(symbol), block: Block(block))
     }
 
-    init(for type: (some Any).Type, @ViewBuilder block: @escaping () -> some View) {
-        self.init(for: type) { _ in block() }
+    init(for symbol: (some Any).Type, @ViewBuilder block: @escaping () -> some View) {
+        self.init(for: symbol) { _ in block() }
     }
 
-    static func missing<T>(_ type: T.Type, @ViewBuilder block: @escaping (T) -> some View) -> Self {
-        Self(for: type, block: block)
+    static func missing(@ViewBuilder block: @escaping (_ missing: MissingSymbol) -> some View) -> Self {
+        Self(for: MissingSymbol.self, block: block)
     }
 
-    static func missing(_ type: (some Any).Type, @ViewBuilder block: @escaping () -> some View) -> Self {
-        .missing(type) { _ in block() }
+    static func missing(@ViewBuilder block: @escaping () -> some View) -> Self {
+        .missing { _ in block() }
     }
 }

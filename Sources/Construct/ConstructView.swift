@@ -23,6 +23,14 @@ public struct ConstructView<T>: View {
 
 #Preview {
     ConstructView(for: 42)
+        .construct {
+            ConstructItem.missing { missing in
+                Text("Missing \(missing.type)")
+            }
+            ConstructItem(for: Int.self) { value in
+                Text("Value \(value)")
+            }
+        }
 }
 
 #Preview {
