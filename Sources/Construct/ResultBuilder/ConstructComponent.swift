@@ -4,7 +4,7 @@ public struct ConstructComponent: ConstructContent {
     let store: Store
 
     public var body: some ConstructContent {
-        fatalError("ConstructResult.body should never be called")
+        fatalError("ConstructComponent.body should never be called")
     }
 }
 
