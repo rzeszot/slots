@@ -1,5 +1,5 @@
-import SwiftUI
 import Construct
+import SwiftUI
 
 struct NestingPlaceholderAlpha: Hashable {}
 struct NestingPlaceholderBeta: Hashable {}
@@ -32,7 +32,7 @@ enum Child: CaseIterable {
 
     var defined: [Child] {
         let index = Self.allCases.firstIndex(of: self)!
-        return Array(Self.allCases[0..<index+1])
+        return Array(Self.allCases[0 ..< index + 1])
     }
 }
 
@@ -99,8 +99,8 @@ struct NestingView: View {
 }
 
 private extension View {
-   @ViewBuilder
-   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
+    @ViewBuilder
+    func `if`(_ conditional: Bool, content: (Self) -> some View) -> some View {
         if conditional {
             content(self)
         } else {

@@ -8,9 +8,7 @@ struct MissingView: View {
     }
 
     var message: Text {
-        Text("No view builder found for type: ")
-        + Text(String(describing: type))
-            .fontWeight(.bold)
+        Text("No view builder found for type: ") + Text("\(type)").bold()
     }
 
     var body: some View {

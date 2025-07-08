@@ -1,6 +1,6 @@
 @testable import Construct
-import Testing
 import SwiftUI
+import Testing
 
 @Suite
 struct StoreTests {
