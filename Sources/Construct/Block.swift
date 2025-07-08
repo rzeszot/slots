@@ -16,10 +16,4 @@ struct Block {
     func callAsFunction(_ value: some Any) -> some View {
         build(value)
     }
-
-    func cast<Value>() -> (Value) -> AnyView {
-        { parameter in
-            build(parameter)
-        }
-    }
 }

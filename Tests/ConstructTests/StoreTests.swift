@@ -40,7 +40,6 @@ import Testing
         #expect(sut.count == 1)
     }
 
-
     @Test func appending_creates_new_instance() {
         let original = Store.empty
         let sut = original.appending { (foo: Foo) in
