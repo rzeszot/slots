@@ -2,7 +2,17 @@ import SwiftUI
 
 @resultBuilder
 @MainActor
-public struct ConstructContentBuilder {}
+public struct ConstructContentBuilder {
+    let store: Store
+
+    init(@ConstructContentBuilder content: () -> some ConstructContent) {
+        let result = content()
+        let final = result as? ConstructComponent
+        let store = final?.store
+
+        self.store = store ?? .empty
+    }
+}
 
 public extension ConstructContentBuilder {
     static func buildExpression(_ content: some ConstructContent) -> ConstructComponent {

@@ -2,11 +2,10 @@ import SwiftUI
 
 public extension View {
     func construct(@ConstructContentBuilder content: () -> some ConstructContent) -> some View {
-        let result = content()
-        let new = (result as? ConstructComponent)?.store ?? .empty
+        let builder = ConstructContentBuilder(content: content)
 
-        return transformEnvironment(\.store) { old in
-            old = old.merging(new)
+        return transformEnvironment(\.store) { store in
+            store = store.merging(builder.store)
         }
     }
 }
