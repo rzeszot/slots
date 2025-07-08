@@ -21,4 +21,12 @@ public extension ConstructItem {
     init(for type: (some Any).Type, @ViewBuilder block: @escaping () -> some View) {
         self.init(for: type) { _ in block() }
     }
+
+    static func missing<T>(_ type: T.Type, @ViewBuilder block: @escaping (T) -> some View) -> Self {
+        Self(for: type, block: block)
+    }
+
+    static func missing<T>(_ type: T.Type, @ViewBuilder block: @escaping () -> some View) -> Self {
+        .missing(type) { _ in block() }
+    }
 }
