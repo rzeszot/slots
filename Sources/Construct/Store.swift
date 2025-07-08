@@ -21,6 +21,12 @@ extension Store {
         merging(other) { _, new in new }
     }
 
+    func appending(item: ConstructItem) -> Self {
+        var copy = self
+        copy[item.symbol] = item.block
+        return copy
+    }
+
     static var empty: Self {
         [:]
     }
