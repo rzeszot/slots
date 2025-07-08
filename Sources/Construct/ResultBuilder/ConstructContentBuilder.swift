@@ -19,7 +19,7 @@ public extension ConstructContentBuilder {
         if let item = content as? ConstructItem {
             ConstructComponent(store: item.store)
         } else if let result = content as? ConstructComponent {
-            ConstructComponent(store: result.store)
+            result
         } else {
             buildExpression(content.body)
         }
