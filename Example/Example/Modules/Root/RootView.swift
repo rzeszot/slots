@@ -11,8 +11,6 @@ struct RootView: View {
                         ConstructView(for: ProductsPlaceholder.list)
                     case .bag:
                         ConstructView(for: BagPlaceholder())
-                    case .nesting:
-                        NestingView()
                     }
                 }
                 ProductsConstructItem()

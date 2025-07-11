@@ -22,15 +22,6 @@ struct MainView: View {
                     Label("Bag", systemImage: "bag")
                 }
                 .tag(Child.bag)
-            ConstructView(for: MainPlaceholder.nesting)
-                .tabItem {
-                    Label("Nesting", systemImage: "rectangle.stack")
-                }
-                .tag(Child.nesting)
-            ConstructView(for: 42)
-                .tabItem {
-                    Label("Missing", systemImage: "lightbulb.min.badge.exclamationmark")
-                }
         }
     }
 }
