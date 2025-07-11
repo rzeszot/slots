@@ -1,12 +1,9 @@
-import Foundation
+import SwiftUI
 
-final class ProductRepository: ObservableObject {
-    @Published var products: [Product]
-
-    init() {
-        products = [
-            Product(id: 1, name: "Foo"),
-            Product(id: 2, name: "Bar"),
-        ]
-    }
+@Observable final class ProductRepository {
+    var products: [Product] = [
+        Product(id: 1, name: "Foo"),
+        Product(id: 2, name: "Bar"),
+        Product(id: 3, name: "Baz")
+    ]
 }

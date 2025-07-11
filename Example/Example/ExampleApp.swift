@@ -1,4 +1,3 @@
-import Construct
 import SwiftUI
 
 @main

@@ -19,3 +19,12 @@ struct ProductDetailsView: View {
         .navigationTitle(product.name)
     }
 }
+
+#Preview {
+    ProductDetailsView(
+        product: Product(
+            id: 1,
+            name: "Foo bar"
+        )
+    )
+}

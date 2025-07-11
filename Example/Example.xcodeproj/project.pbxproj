@@ -7,21 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D8487F82C59425A007AADA5 /* construct in Resources */ = {isa = PBXBuildFile; fileRef = 2D8487F72C59425A007AADA5 /* construct */; };
 		2D8487FA2C594278007AADA5 /* Construct in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8487F92C594278007AADA5 /* Construct */; };
-		2DDAD4D32C547D4300DFF03F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAD4D22C547D4300DFF03F /* ExampleApp.swift */; };
-		2DDAD4D72C547D4400DFF03F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DDAD4D62C547D4400DFF03F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D8487F72C59425A007AADA5 /* construct */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = construct; path = ..; sourceTree = "<group>"; };
 		2DDAD4CF2C547D4300DFF03F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DDAD4D22C547D4300DFF03F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
-		2DDAD4D62C547D4400DFF03F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2D7249922E21B018000E772B /* Modules */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modules; sourceTree = "<group>"; };
+		2D3671DF2E21C17E00F825C2 /* Example */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Example; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +35,7 @@
 			isa = PBXGroup;
 			children = (
 				2D8487F72C59425A007AADA5 /* construct */,
-				2DDAD4D12C547D4300DFF03F /* Example */,
+				2D3671DF2E21C17E00F825C2 /* Example */,
 				2DDAD4D02C547D4300DFF03F /* Products */,
 				2DDAD4E52C547D9A00DFF03F /* Frameworks */,
 			);
@@ -52,16 +47,6 @@
 				2DDAD4CF2C547D4300DFF03F /* Example.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2DDAD4D12C547D4300DFF03F /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				2D7249922E21B018000E772B /* Modules */,
-				2DDAD4D22C547D4300DFF03F /* ExampleApp.swift */,
-				2DDAD4D62C547D4400DFF03F /* Assets.xcassets */,
-			);
-			path = Example;
 			sourceTree = "<group>";
 		};
 		2DDAD4E52C547D9A00DFF03F /* Frameworks */ = {
@@ -88,7 +73,7 @@
 				2DDAD4E42C547D9400DFF03F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				2D7249922E21B018000E772B /* Modules */,
+				2D3671DF2E21C17E00F825C2 /* Example */,
 			);
 			name = Example;
 			packageProductDependencies = (
@@ -136,8 +121,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D8487F82C59425A007AADA5 /* construct in Resources */,
-				2DDAD4D72C547D4400DFF03F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +131,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDAD4D32C547D4300DFF03F /* ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

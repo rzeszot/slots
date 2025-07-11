@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ProductsView: View {
     @State var path = NavigationPath()
-    @ObservedObject var repository = ProductRepository()
+    @State var repository = ProductRepository()
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -15,7 +15,7 @@ struct ProductsView: View {
                     }
                 }
         }
-        .environmentObject(repository)
+        .environment(repository)
     }
 }
 

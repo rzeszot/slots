@@ -2,8 +2,7 @@ import Construct
 import SwiftUI
 
 struct ProductsListView: View {
-    @EnvironmentObject
-    var repository: ProductRepository
+    @Environment(ProductRepository.self) var repository
 
     var body: some View {
         VStack {
@@ -25,6 +24,11 @@ struct ProductsListView: View {
 }
 
 #Preview {
-    ProductsListView()
-        .environmentObject(ProductRepository())
+    NavigationStack {
+        ProductsListView()
+            .navigationDestination(for: ProductsLink.self) { link in
+                Text("\(link)")
+            }
+    }
+    .environment(ProductRepository())
 }
