@@ -2,30 +2,23 @@ import Construct
 import SwiftUI
 
 struct MainView: View {
-    enum Child {
-        case products
-        case bag
-        case nesting
-    }
-
-    @State var active: Child = .products
+    @State var active: MainSymbol = .products
 
     var body: some View {
         TabView(selection: $active) {
-            ConstructView(for: MainSymbol.products)
-                .tabItem {
-                    Label("Products", systemImage: "laptopcomputer.and.iphone")
-                }
-                .tag(Child.products)
-            ConstructView(for: MainSymbol.bag)
-                .tabItem {
-                    Label("Bag", systemImage: "bag")
-                }
-                .tag(Child.bag)
+            Tab("Products", systemImage: "laptopcomputer.and.iphone", value: .products) {
+                ConstructView(for: MainSymbol.products)
+            }
+            Tab("Bag", systemImage: "bag", value: .bag) {
+                ConstructView(for: MainSymbol.bag)
+            }
         }
     }
 }
 
 #Preview {
     MainView()
+        .construct(for: MainSymbol.self) { symbol in
+            Text("\(symbol)")
+        }
 }
