@@ -12,12 +12,12 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $active) {
-            ConstructView(for: MainPlaceholder.products)
+            ConstructView(for: MainSymbol.products)
                 .tabItem {
                     Label("Products", systemImage: "laptopcomputer.and.iphone")
                 }
                 .tag(Child.products)
-            ConstructView(for: MainPlaceholder.bag)
+            ConstructView(for: MainSymbol.bag)
                 .tabItem {
                     Label("Bag", systemImage: "bag")
                 }

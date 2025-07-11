@@ -1,6 +1,6 @@
 import Foundation
 
-enum MainPlaceholder {
+enum MainSymbol {
     case products
     case bag
 }

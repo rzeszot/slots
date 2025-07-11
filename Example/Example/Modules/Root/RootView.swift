@@ -5,7 +5,7 @@ struct RootView: View {
     var body: some View {
         MainView()
             .construct {
-                ConstructItem(for: MainPlaceholder.self) { placeholder in
+                ConstructItem(for: MainSymbol.self) { placeholder in
                     switch placeholder {
                     case .products:
                         ConstructView(for: ProductsPlaceholder.list)
