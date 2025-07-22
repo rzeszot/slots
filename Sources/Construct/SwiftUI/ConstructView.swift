@@ -25,10 +25,10 @@ public struct ConstructView<T>: View {
     ConstructView(for: 42)
         .construct {
             ConstructItem.missing { missing in
-                Text("Missing \(missing.type)")
+                Text("Missing \(String(describing: missing.type))")
             }
             ConstructItem(for: Int.self) { value in
-                Text("Value \(value)")
+                Text("Value \(String(describing: value))")
             }
         }
 }

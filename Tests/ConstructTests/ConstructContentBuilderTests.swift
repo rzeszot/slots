@@ -6,10 +6,10 @@ import Testing
     @Test func example_1() {
         let sut = ConstructContentBuilder {
             ConstructItem(for: Foo.self) { foo in
-                Text("\(foo)")
+                Text(String(describing: foo))
             }
             ConstructItem(for: Bar.self) { bar in
-                Text("\(bar)")
+                Text(String(describing: bar))
             }
         }
 
@@ -49,7 +49,7 @@ private enum Baz {
 private struct BazItem: ConstructContent {
     var body: some ConstructContent {
         ConstructItem(for: Baz.self) { baz in
-            Text("\(baz)")
+            Text(String(describing: baz))
         }
     }
 }
