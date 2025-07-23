@@ -9,6 +9,8 @@ struct MainConstructContent: ConstructContent {
                 ConstructView(for: ProductsSymbol.list)
             case .bag:
                 ConstructView(for: BagSymbol.main)
+            case .inspect:
+                ConstructInspectorView()
             }
         }
     }

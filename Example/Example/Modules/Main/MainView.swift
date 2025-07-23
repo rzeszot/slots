@@ -12,6 +12,9 @@ struct MainView: View {
             Tab("Bag", systemImage: "bag", value: .bag) {
                 ConstructView(for: MainSymbol.bag)
             }
+            Tab("Inspect", systemImage: "bag", value: .inspect) {
+                ConstructView(for: MainSymbol.inspect)
+            }
         }
     }
 }
