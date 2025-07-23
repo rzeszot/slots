@@ -24,7 +24,6 @@ struct ErrorView: View {
         }
         .padding()
         .background(Color(.systemBackground))
-        .padding()
     }
 }
 
