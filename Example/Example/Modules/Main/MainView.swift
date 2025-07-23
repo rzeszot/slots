@@ -19,6 +19,6 @@ struct MainView: View {
 #Preview {
     MainView()
         .construct(for: MainSymbol.self) { symbol in
-            Text("\(symbol)")
+            Text(String(describing: symbol))
         }
 }

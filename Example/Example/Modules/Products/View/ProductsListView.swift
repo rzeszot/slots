@@ -27,7 +27,7 @@ struct ProductsListView: View {
     NavigationStack {
         ProductsListView()
             .navigationDestination(for: ProductsLink.self) { link in
-                Text("\(link)")
+                Text(String(describing: link))
             }
     }
     .environment(ProductRepository())
