@@ -4,27 +4,29 @@ struct ProductDetailsView: View {
     let product: Product
 
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Text(verbatim: product.name)
-                    Text(verbatim: String(product.id))
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(verbatim: product.name)
+                Text(verbatim: String(product.id))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding()
         .navigationTitle(product.name)
     }
 }
 
 #Preview {
-    ProductDetailsView(
-        product: Product(
-            id: 1,
-            name: "Foo bar"
-        )
-    )
+    @Previewable @State var path: [Product] = [.fixtures.foo]
+
+    NavigationStack(path: $path) {
+        Color.yellow
+            .navigationDestination(for: Product.self) { product in
+                ProductDetailsView(
+                    product: product
+                )
+            }
+    }
 }
