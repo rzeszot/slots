@@ -70,7 +70,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2DDAD4E42C547D9400DFF03F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2D3671DF2E21C17E00F825C2 /* Example */,
@@ -135,13 +134,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2DDAD4E42C547D9400DFF03F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 2DDAD4E32C547D9400DFF03F /* Reroute */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2DDAD4DB2C547D4400DFF03F /* Debug */ = {
@@ -356,10 +348,6 @@
 		2D8487F92C594278007AADA5 /* Construct */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Construct;
-		};
-		2DDAD4E32C547D9400DFF03F /* Reroute */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Reroute;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
