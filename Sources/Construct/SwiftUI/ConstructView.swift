@@ -21,6 +21,35 @@ public struct ConstructView<T>: View {
     }
 }
 
+public extension ConstructView {
+    static func maybe(for value: T) -> some View {
+        ConstructStoreReader { store in
+            if store[T.self] != nil {
+                ConstructView(for: value)
+            }
+        }
+    }
+}
+
+#Preview {
+    @Previewable @State var value = true
+
+    let content = VStack {
+        Toggle("construct", isOn: $value)
+        ConstructView.maybe(for: 42)
+    }
+    .padding()
+
+    if value {
+        content
+            .construct(for: Int.self) { value in
+                Text("Int: \(value)")
+            }
+    } else {
+        content
+    }
+}
+
 #Preview {
     ConstructView(for: 42)
         .construct {
