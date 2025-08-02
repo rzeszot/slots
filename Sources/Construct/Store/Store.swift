@@ -22,9 +22,7 @@ extension Store {
     }
 
     func appending(item: ConstructItem) -> Self {
-        var copy = self
-        copy[item.symbol] = item.block
-        return copy
+        appending(symbol: item.symbol, block: item.block)
     }
 
     static var empty: Self {
