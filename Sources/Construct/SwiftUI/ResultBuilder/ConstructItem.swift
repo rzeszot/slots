@@ -9,7 +9,7 @@ public struct ConstructItem: ConstructContent {
     }
 
     var store: Store {
-        [symbol: block]
+        Store(storage: [symbol: block])
     }
 }
 

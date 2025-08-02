@@ -17,7 +17,7 @@ struct ConstructStoreReader<Content: View>: View {
 
 #Preview {
     ConstructStoreReader { store in
-        Text(store.keys.map(\.name).sorted().joined(separator: ", "))
+        Text(store.storage.keys.map(\.name).sorted().joined(separator: ", "))
     }
     .construct(for: Int.self) { value in
         Text("Int: \(value)")

@@ -5,7 +5,7 @@ public struct ConstructInspectorView: View {
     private var store
 
     private var items: [Symbol] {
-        store.keys.sorted()
+        store.storage.keys.sorted()
     }
 
     public init() {}

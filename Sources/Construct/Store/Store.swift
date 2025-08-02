@@ -1,16 +1,20 @@
 import SwiftUI
 
-typealias Store = [Symbol: Block]
+struct Store {
+    let storage: [Symbol: Block]
 
-extension Store {
+    var count: Int {
+        storage.count
+    }
+
     subscript(_ type: (some Any).Type) -> Block? {
-        self[Symbol(type)]
+        storage[Symbol(type)]
     }
 
     func appending(symbol: Symbol, block: Block) -> Self {
-        var copy = self
+        var copy = storage
         copy[symbol] = block
-        return copy
+        return Self(storage: copy)
     }
 
     func appending<T>(block: @escaping (T) -> some View) -> Self {
@@ -18,7 +22,8 @@ extension Store {
     }
 
     func merging(_ other: Store) -> Self {
-        merging(other) { _, new in new }
+        let storage = storage.merging(other.storage) { _, new in new }
+        return Self(storage: storage)
     }
 
     func appending(item: ConstructItem) -> Self {
@@ -26,7 +31,7 @@ extension Store {
     }
 
     static var empty: Self {
-        [:]
+        Self(storage: [:])
     }
 }
 
