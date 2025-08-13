@@ -2,7 +2,7 @@ import SwiftUI
 
 extension LocalizedStringResource {
     private static func t(_ key: String.LocalizationValue) -> LocalizedStringResource {
-        Self(key, table: "Error", bundle: .module)
+        Self(key, table: "Error", bundle: .here)
     }
 
     enum error {
@@ -16,6 +16,12 @@ extension LocalizedStringResource {
             .t("missing \(String(describing: type))")
         }
     }
+}
+
+private extension LocalizedStringResource.BundleDescription {
+    final class Token {}
+
+    static let here = Self.forClass(Token.self)
 }
 
 #Preview {

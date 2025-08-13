@@ -31,24 +31,24 @@ public extension ConstructView {
     }
 }
 
-#Preview {
-    @Previewable @State var value = true
-
-    let content = VStack {
-        Toggle("construct", isOn: $value)
-        ConstructView.maybe(for: 42)
-    }
-    .padding()
-
-    if value {
-        content
-            .construct(for: Int.self) { value in
-                Text("Int: \(value)")
-            }
-    } else {
-        content
-    }
-}
+//#Preview {
+//    @Previewable @State var value = true
+//
+//    let content = VStack {
+//        Toggle("construct", isOn: $value)
+//        ConstructView.maybe(for: 42)
+//    }
+//    .padding()
+//
+//    if value {
+//        content
+//            .construct(for: Int.self) { value in
+//                Text("Int: \(value)")
+//            }
+//    } else {
+//        content
+//    }
+//}
 
 #Preview {
     ConstructView(for: 42)
