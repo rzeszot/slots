@@ -36,8 +36,8 @@ public struct ConstructInspectorView: View {
     .construct {
         ConstructItem(for: String.self) { value in
             ErrorView(
-                title: Text("String builder"),
-                message: Text(value)
+                title: "String builder",
+                message: LocalizedStringResource(String.LocalizationValue(value))
             )
         }
         ConstructItem.missing { missing in

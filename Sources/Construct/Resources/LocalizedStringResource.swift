@@ -5,6 +5,12 @@ extension LocalizedStringResource {
         Self(key, table: "Error", bundle: .here)
     }
 
+    func locale(_ locale: Locale) -> Self {
+        var copy = self
+        copy.locale = locale
+        return copy
+    }
+
     enum error {
         static let fatal: LocalizedStringResource = .t("fatal")
 

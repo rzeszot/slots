@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct ErrorView: View {
-    let title: Text
-    let message: Text
+    let title: LocalizedStringResource
+    let message: LocalizedStringResource
+
+    @Environment(\.locale)
+    private var locale
 
     var body: some View {
         VStack(spacing: 8) {
@@ -11,12 +14,12 @@ struct ErrorView: View {
                 .font(.system(size: 32))
 
             Group {
-                title
+                Text(title.locale(locale))
             }
             .font(.headline)
 
             Group {
-                message
+                Text(message.locale(locale))
             }
             .font(.caption)
             .foregroundStyle(.secondary)
@@ -28,37 +31,32 @@ struct ErrorView: View {
 }
 
 nonisolated extension ErrorView {
-    static func fatal(message: Text) -> Self {
+    static func fatal(message: LocalizedStringResource) -> Self {
         ErrorView(
-            title: Text(.error.fatal),
+            title: .error.fatal,
             message: message
         )
     }
 
     static func cast(to type: Any.Type) -> Self {
         .fatal(
-            message: Text(.error.cast(to: type))
+            message: .error.cast(to: type)
         )
     }
 
     static func missing(for type: Any.Type) -> Self {
         .fatal(
-            message: Text(.error.missing(for: type))
+            message: .error.missing(for: type)
         )
     }
 }
 
 #Preview {
-    ErrorView.cast(to: Int.self)
+    ErrorView.fatal(message: "previews")
+        .environment(\.locale, Locale(identifier: "pl"))
 }
 
 #Preview {
-    ErrorView.missing(for: Int.self)
-}
-
-#Preview {
-    ErrorView(
-        title: Text("Lorem ipsum"),
-        message: Text("Dolor sit amet")
-    )
+    ErrorView.fatal(message: "previews")
+        .environment(\.locale, Locale(identifier: "en"))
 }
