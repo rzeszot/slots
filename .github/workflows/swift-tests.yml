@@ -1,7 +1,14 @@
 name: Swift tests
 
 on:
-  - push
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -19,5 +26,5 @@ jobs:
             with:
               swift-version: ${{ matrix.swift }}
           - uses: actions/checkout@v5
-          - run: swift build
-          - run: swift test
+          - run: swift build --build-tests -v
+          - run: swift test --parallel --enable-code-coverage
