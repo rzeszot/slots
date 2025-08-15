@@ -6,6 +6,7 @@ let package = Package(
     name: "Construct",
     platforms: [
         .iOS(.v16),
+        .macOS(.v13)
     ],
     products: [
         .library(
@@ -17,7 +18,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Construct"
+            name: "Construct",
+            resources: [
+                .process("Resources/Error.xcstrings")
+            ]
         ),
         .testTarget(
             name: "ConstructTests",

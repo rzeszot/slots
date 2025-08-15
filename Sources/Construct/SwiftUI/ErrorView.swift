@@ -26,7 +26,7 @@ struct ErrorView: View {
             .multilineTextAlignment(.center)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(.background)
     }
 }
 
