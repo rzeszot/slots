@@ -1,0 +1,23 @@
+name: Swift tests
+
+on:
+  - push
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        swift:
+          - "5.9"
+        name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        steps:
+          - uses: swift-actions/setup-swift@682457186b71c25a884c45c06f859febbe259240
+            with:
+              swift-version: ${{ matrix.swift }}
+          - uses: actions/checkout@v5
+          - run: swift build
+          - run: swift test
