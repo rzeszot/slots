@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ConstructStoreReader<Content: View>: View {
-    private let content: (Store) -> Content
+    private let content: (ConstructStore) -> Content
 
     @Environment(\.store)
     var store
 
-    init(@ViewBuilder content: @escaping (_ store: Store) -> Content) {
+    init(@ViewBuilder content: @escaping (_ store: ConstructStore) -> Content) {
         self.content = content
     }
 

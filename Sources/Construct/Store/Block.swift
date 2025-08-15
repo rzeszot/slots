@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Block {
+public struct Block {
     private let build: (Any) -> AnyView
 
     init<Value>(_ block: @escaping (Value) -> some View) {
@@ -13,7 +13,7 @@ struct Block {
         }
     }
 
-    func callAsFunction(_ value: some Any) -> some View {
+    public func callAsFunction(_ value: some Any) -> some View {
         build(value)
     }
 }

@@ -8,8 +8,8 @@ public struct ConstructItem: ConstructContent {
         fatalError("ConstructItem.body should never be called")
     }
 
-    var store: Store {
-        Store(storage: [symbol: block])
+    var store: ConstructStore {
+        ConstructStore(storage: [symbol: block])
     }
 }
 

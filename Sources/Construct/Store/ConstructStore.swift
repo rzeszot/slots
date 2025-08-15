@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct Store {
+public struct ConstructStore {
     let storage: [Symbol: Block]
+
+    public subscript(_ type: (some Any).Type) -> Block? {
+        storage[Symbol(type)]
+    }
 
     var count: Int {
         storage.count
-    }
-
-    subscript(_ type: (some Any).Type) -> Block? {
-        storage[Symbol(type)]
     }
 
     func appending(symbol: Symbol, block: Block) -> Self {
@@ -21,7 +21,7 @@ struct Store {
         appending(symbol: Symbol(T.self), block: Block(block))
     }
 
-    func merging(_ other: Store) -> Self {
+    func merging(_ other: Self) -> Self {
         let storage = storage.merging(other.storage) { _, new in new }
         return Self(storage: storage)
     }
@@ -35,8 +35,8 @@ struct Store {
     }
 }
 
-extension [Store] {
-    func joined() -> Store {
+extension [ConstructStore] {
+    func joined() -> ConstructStore {
         reduce(.empty) { result, store in
             result.merging(store)
         }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct ConstructComponent: ConstructContent {
-    let store: Store
+    let store: ConstructStore
 
     public var body: some ConstructContent {
         fatalError("ConstructComponent.body should never be called")
@@ -9,7 +9,7 @@ public struct ConstructComponent: ConstructContent {
 }
 
 extension ConstructComponent {
-    init(stores: [Store]) {
+    init(stores: [ConstructStore]) {
         self.init(store: stores.joined())
     }
 }

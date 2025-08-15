@@ -3,7 +3,7 @@ import SwiftUI
 @resultBuilder
 @MainActor
 public struct ConstructContentBuilder {
-    let store: Store
+    let store: ConstructStore
 
     init(@ConstructContentBuilder content: () -> some ConstructContent) {
         let result = content()

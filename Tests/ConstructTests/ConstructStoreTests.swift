@@ -2,15 +2,15 @@
 import SwiftUI
 import Testing
 
-@Suite struct StoreTests {
+@Suite struct ConstructStoreTests {
     @Test func initialize_empty() {
-        let sut = Store.empty
+        let sut = ConstructStore.empty
 
         #expect(sut.count == 0)
     }
 
     @Test func appending_symbol_and_block() {
-        let sut = Store.empty
+        let sut = ConstructStore.empty
             .appending(
                 symbol: Symbol(Foo.self),
                 block: Block { (foo: Foo) in
@@ -26,7 +26,7 @@ import Testing
     }
 
     @Test func appending_item() {
-        let original = Store.empty
+        let original = ConstructStore.empty
         let sut = original.appending(
             item: ConstructItem(
                 for: Foo.self,
@@ -41,7 +41,7 @@ import Testing
     }
 
     @Test func appending_creates_new_instance() {
-        let original = Store.empty
+        let original = ConstructStore.empty
         let sut = original.appending { (foo: Foo) in
             Text(verbatim: foo.parameter)
         }
@@ -51,8 +51,8 @@ import Testing
     }
 
     @Test func merging() {
-        let lhs = Store.empty.appending(item: .foo)
-        let rhs = Store.empty.appending(item: .bar)
+        let lhs = ConstructStore.empty.appending(item: .foo)
+        let rhs = ConstructStore.empty.appending(item: .bar)
 
         let sut = lhs.merging(rhs)
 
@@ -63,8 +63,8 @@ import Testing
     }
 
     @Test func joined() {
-        let lhs = Store.empty.appending(item: .foo)
-        let rhs = Store.empty.appending(item: .bar)
+        let lhs = ConstructStore.empty.appending(item: .foo)
+        let rhs = ConstructStore.empty.appending(item: .bar)
 
         let sut = [lhs, rhs].joined()
 
