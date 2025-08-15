@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct Block {
+public struct ConstructBlock {
     private let build: (Any) -> AnyView
 
     init<Value>(_ block: @escaping (Value) -> some View) {

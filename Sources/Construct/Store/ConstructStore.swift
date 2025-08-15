@@ -1,9 +1,9 @@
 import SwiftUI
 
 public struct ConstructStore {
-    let storage: [Symbol: Block]
+    let storage: [Symbol: ConstructBlock]
 
-    public subscript(_ type: (some Any).Type) -> Block? {
+    public subscript(_ type: (some Any).Type) -> ConstructBlock? {
         storage[Symbol(type)]
     }
 
@@ -11,14 +11,14 @@ public struct ConstructStore {
         storage.count
     }
 
-    func appending(symbol: Symbol, block: Block) -> Self {
+    func appending(symbol: Symbol, block: ConstructBlock) -> Self {
         var copy = storage
         copy[symbol] = block
         return Self(storage: copy)
     }
 
     func appending<T>(block: @escaping (T) -> some View) -> Self {
-        appending(symbol: Symbol(T.self), block: Block(block))
+        appending(symbol: Symbol(T.self), block: ConstructBlock(block))
     }
 
     func merging(_ other: Self) -> Self {

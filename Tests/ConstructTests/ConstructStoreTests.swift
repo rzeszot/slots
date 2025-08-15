@@ -13,7 +13,7 @@ import Testing
         let sut = ConstructStore.empty
             .appending(
                 symbol: Symbol(Foo.self),
-                block: Block { (foo: Foo) in
+                block: ConstructBlock { (foo: Foo) in
                     Text(verbatim: foo.parameter)
                 }
             )

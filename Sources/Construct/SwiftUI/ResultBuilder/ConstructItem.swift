@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct ConstructItem: ConstructContent {
     let symbol: Symbol
-    let block: Block
+    let block: ConstructBlock
 
     public var body: some ConstructContent {
         fatalError("ConstructItem.body should never be called")
@@ -15,7 +15,7 @@ public struct ConstructItem: ConstructContent {
 
 public extension ConstructItem {
     init<T>(for symbol: T.Type, @ViewBuilder block: @escaping (_ symbol: T) -> some View) {
-        self.init(symbol: Symbol(symbol), block: Block(block))
+        self.init(symbol: Symbol(symbol), block: ConstructBlock(block))
     }
 
     init(for symbol: (some Any).Type, @ViewBuilder block: @escaping () -> some View) {
