@@ -13,17 +13,11 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-        swift:
-          - "5.9"
-    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     concurrency:
-      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-${{ matrix.os }}-${{ matrix.swift }}
+      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-${{ matrix.os }}
       cancel-in-progress: true
     steps:
-      - uses: swift-actions/setup-swift@682457186b71c25a884c45c06f859febbe259240
-        with:
-          swift-version: ${{ matrix.swift }}
       - uses: actions/checkout@v5
       - run: swift build --build-tests -v
       - run: swift test --parallel --enable-code-coverage
