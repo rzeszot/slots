@@ -19,5 +19,4 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v5
-      - run: swift build --build-tests -v
       - run: swift test --parallel --enable-code-coverage
