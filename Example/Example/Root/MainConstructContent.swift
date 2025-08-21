@@ -11,6 +11,8 @@ struct MainConstructContent: ConstructContent {
                 ConstructView(for: BagSymbol.main)
             case .inspect:
                 ConstructInspectorView()
+            case .test:
+                TestView()
             }
         }
     }

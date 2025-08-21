@@ -6,14 +6,36 @@ on:
     branches:
       - main
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
+
 jobs:
-  build:
+  unit-tests:
     runs-on: macos-15
+    timeout-minutes: 2
     concurrency:
       group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-macos
       cancel-in-progress: true
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
     steps:
       - uses: actions/checkout@v5
       - run: swift test --parallel --enable-code-coverage
+
+  ui-tests:
+    runs-on: macos-15
+    timeout-minutes: 10
+    env:
+      SCHEME: Example
+      DESTINATION: platform=iOS Simulator,name=iPhone 16 Pro,OS=18.6
+      RESULT_BUNDLE: Example.xcresult
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          set -o pipefail
+          cd Example
+          xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" -resultBundlePath "$RESULT_BUNDLE" test | xcpretty
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.RESULT_BUNDLE }}
+          path: Example/${{ env.RESULT_BUNDLE }}
+          if-no-files-found: ignore
