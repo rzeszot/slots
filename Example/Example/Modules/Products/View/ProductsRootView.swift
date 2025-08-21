@@ -1,7 +1,7 @@
 import Construct
 import SwiftUI
 
-struct ProductsView: View {
+struct ProductsRootView: View {
     @State var path = NavigationPath()
 
     var body: some View {
@@ -18,5 +18,5 @@ struct ProductsView: View {
 }
 
 #Preview {
-    ProductsView()
+    ProductsRootView()
 }

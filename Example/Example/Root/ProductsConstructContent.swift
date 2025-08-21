@@ -6,7 +6,7 @@ struct ProductsConstructContent: ConstructContent {
         ConstructItem(for: ProductsSymbol.self) { placeholder in
             switch placeholder {
             case .list:
-                ProductsView()
+                ProductsRootView()
             case let .details(product):
                 ProductDetailsView(product: product)
             }

@@ -4,7 +4,11 @@ import SwiftUI
 struct ExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
+            if ProcessInfo.processInfo.arguments.contains("--ui-tests") {
+                TestView()
+            } else {
+                RootView()
+            }
         }
     }
 }

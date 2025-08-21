@@ -31,7 +31,19 @@ private extension LocalizedStringResource.BundleDescription {
 }
 
 #Preview {
-    Text(.error.fatal)
-    Text(.error.cast(to: Int.self))
-    Text(.error.missing(for: String.self))
+    VStack {
+        Text(.error.fatal)
+        Text(.error.cast(to: Int.self))
+        Text(.error.missing(for: String.self))
+    }
+    .environment(\.locale, Locale(identifier: "pl"))
+
+    Divider()
+
+    VStack {
+        Text(.error.fatal)
+        Text(.error.cast(to: Int.self))
+        Text(.error.missing(for: String.self))
+    }
+    .environment(\.locale, Locale(identifier: "en"))
 }

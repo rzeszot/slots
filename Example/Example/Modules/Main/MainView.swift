@@ -15,6 +15,9 @@ struct MainView: View {
             Tab("Inspect", systemImage: "ant", value: .inspect) {
                 ConstructView(for: MainSymbol.inspect)
             }
+            Tab("Test", systemImage: "testtube.2", value: .test) {
+                ConstructView(for: MainSymbol.test)
+            }
         }
     }
 }

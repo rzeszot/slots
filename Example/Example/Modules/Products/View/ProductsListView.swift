@@ -1,32 +1,6 @@
 import Construct
 import SwiftUI
 
-@Observable final class ProductsListModel {
-    enum Phase {
-        case loading
-        case content([Product])
-        case failure(Error)
-    }
-
-    private(set) var phase: Phase = .loading
-    private let repository = ProductRepository()
-
-    func refresh() {
-        phase = .loading
-    }
-
-    func reload() async {
-        print("xxx reload")
-        phase = .loading
-        do {
-            let products = try await repository.fetch()
-            phase = .content(products)
-        } catch {
-            phase = .failure(error)
-        }
-    }
-}
-
 struct ProductsListView: View {
     var model = ProductsListModel()
 
