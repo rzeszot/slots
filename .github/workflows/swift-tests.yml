@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 5
     concurrency:
-      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-macos
+      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-unit
       cancel-in-progress: true
     env:
       SCHEME: Construct
@@ -49,7 +49,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 10
     concurrency:
-      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-macos
+      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-ui
       cancel-in-progress: true
     env:
       SCHEME: Example
