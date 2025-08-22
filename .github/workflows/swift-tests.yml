@@ -48,6 +48,9 @@ jobs:
     name: UI tests
     runs-on: macos-15
     timeout-minutes: 10
+    concurrency:
+      group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-macos
+      cancel-in-progress: true
     env:
       SCHEME: Example
       DESTINATION: platform=iOS Simulator,name=iPhone 16 Pro,OS=18.6
