@@ -23,6 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: |
+          set -o pipefail
+          xcodebuild -version
           xcodebuild \
               -scheme "$SCHEME" \
               -destination "$DESTINATION" \
@@ -49,6 +51,7 @@ jobs:
       - uses: actions/checkout@v5
       - run: |
           set -o pipefail
+          xcodebuild -version
           cd Example
           xcodebuild \
             -scheme "$SCHEME" \
