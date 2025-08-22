@@ -27,7 +27,6 @@ jobs:
       - name: Run unit tests
         run: |
           set -o pipefail
-          xcodebuild -version
           xcodebuild \
               -scheme "$SCHEME" \
               -destination "$DESTINATION" \
@@ -41,7 +40,7 @@ jobs:
         with:
           name: Unit Tests
           path: |
-            ${{ env.RESULT_BUNDLE }}
+            ${{ env.RESULT_BUNDLE }}/
           if-no-files-found: ignore
 
 
@@ -59,7 +58,6 @@ jobs:
       - name: Run UI tests
         run: |
           set -o pipefail
-          xcodebuild -version
           cd Example
           xcodebuild \
             -scheme "$SCHEME" \
@@ -75,5 +73,5 @@ jobs:
         with:
           name: UI Tests
           path: |
-            ${{ env.RESULT_BUNDLE }}
+            ${{ env.RESULT_BUNDLE }}/
           if-no-files-found: ignore
