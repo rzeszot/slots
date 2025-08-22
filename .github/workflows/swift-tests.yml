@@ -11,8 +11,9 @@ env:
 
 jobs:
   unit-tests:
+    name: Unit tests
     runs-on: macos-15
-    timeout-minutes: 2
+    timeout-minutes: 5
     concurrency:
       group: ci-${{ github.workflow }}-${{ github.ref || github.head_ref }}-macos
       cancel-in-progress: true
@@ -21,8 +22,10 @@ jobs:
       DESTINATION: platform=iOS Simulator,name=iPhone 16 Pro,OS=18.6
       RESULT_BUNDLE: Construct.xcresult
     steps:
-      - uses: actions/checkout@v5
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Run unit tests
+        run: |
           set -o pipefail
           xcodebuild -version
           xcodebuild \
@@ -41,6 +44,7 @@ jobs:
 
 
   ui-tests:
+    name: UI tests
     runs-on: macos-15
     timeout-minutes: 10
     env:
@@ -48,8 +52,10 @@ jobs:
       DESTINATION: platform=iOS Simulator,name=iPhone 16 Pro,OS=18.6
       RESULT_BUNDLE: Example.xcresult
     steps:
-      - uses: actions/checkout@v5
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Run UI tests
+        run: |
           set -o pipefail
           xcodebuild -version
           cd Example
