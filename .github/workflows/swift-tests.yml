@@ -30,7 +30,7 @@ jobs:
           xcodebuild \
               -scheme "$SCHEME" \
               -destination "$DESTINATION" \
-              -resultBundlePath "$RESULT_BUNDLE" \
+              -resultBundlePath "artifacts/$RESULT_BUNDLE" \
               -enableCodeCoverage YES \
               clean build test \
               | xcpretty
@@ -40,7 +40,7 @@ jobs:
         with:
           name: Unit Tests
           path: |
-            ${{ env.RESULT_BUNDLE }}/
+            artifacts
           if-no-files-found: ignore
 
 
@@ -62,7 +62,7 @@ jobs:
           xcodebuild \
             -scheme "$SCHEME" \
             -destination "$DESTINATION" \
-            -resultBundlePath "../$RESULT_BUNDLE" \
+            -resultBundlePath "../artifacts/$RESULT_BUNDLE" \
             -enableCodeCoverage YES \
             clean build test \
             | xcpretty
@@ -73,5 +73,5 @@ jobs:
         with:
           name: UI Tests
           path: |
-            ${{ env.RESULT_BUNDLE }}/
+            artifacts
           if-no-files-found: ignore
