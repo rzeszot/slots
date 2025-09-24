@@ -25,6 +25,14 @@ public extension ConstructContentBuilder {
         }
     }
 
+    static func buildEither(first component: ConstructComponent) -> ConstructComponent {
+        component
+    }
+
+    static func buildEither(second component: ConstructComponent) -> ConstructComponent {
+        component
+    }
+
     static func buildBlock(_ components: ConstructComponent...) -> ConstructComponent {
         ConstructComponent(stores: components.map(\.store))
     }

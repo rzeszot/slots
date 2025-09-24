@@ -29,6 +29,43 @@ import Testing
         #expect(sut.store[Bar.self] == nil)
         #expect(sut.store[Baz.self] != nil)
     }
+
+    @Test func example_if_first() {
+        let sut = ConstructContentBuilder {
+            if true {
+                FooItem()
+            } else {
+                BazItem()
+            }
+        }
+
+        #expect(sut.store.count == 1)
+        #expect(sut.store[Foo.self] != nil)
+        #expect(sut.store[Bar.self] == nil)
+        #expect(sut.store[Baz.self] == nil)
+    }
+
+    @Test func example_if_second() {
+        let sut = ConstructContentBuilder {
+            if false {
+                FooItem()
+            } else {
+                BazItem()
+            }
+        }
+
+        #expect(sut.store.count == 1)
+        #expect(sut.store[Foo.self] == nil)
+        #expect(sut.store[Bar.self] == nil)
+        #expect(sut.store[Baz.self] != nil)
+    }
+
+    @Test func example_empty() {
+        let sut = ConstructContentBuilder {
+
+        }
+        #expect(sut.store.count == 0)
+    }
 }
 
 private enum Foo {
@@ -44,6 +81,14 @@ private enum Bar {
 private enum Baz {
     case baz1
     case baz2
+}
+
+private struct FooItem: ConstructContent {
+    var body: some ConstructContent {
+        ConstructItem(for: Foo.self) { foo in
+            Text(String(describing: foo))
+        }
+    }
 }
 
 private struct BazItem: ConstructContent {
