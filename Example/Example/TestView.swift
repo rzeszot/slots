@@ -47,8 +47,6 @@ struct TestView: View {
             .navigationTitle("Present Value")
         }
     }
-
-
 }
 
 #Preview {
