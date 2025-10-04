@@ -1,9 +1,9 @@
 import SwiftUI
 
 public struct SlotStore {
-    let storage: [Symbol: SlotBlock]
+    let storage: [Symbol: SlotBuilder]
 
-    public subscript(_ type: (some Any).Type) -> SlotBlock? {
+    public subscript(_ type: (some Any).Type) -> SlotBuilder? {
         storage[Symbol(type)]
     }
 
@@ -11,14 +11,14 @@ public struct SlotStore {
         storage.count
     }
 
-    func appending(symbol: Symbol, block: SlotBlock) -> Self {
+    func appending(symbol: Symbol, builder: SlotBuilder) -> Self {
         var copy = storage
-        copy[symbol] = block
+        copy[symbol] = builder
         return Self(storage: copy)
     }
 
-    func appending<T>(block: @escaping (T) -> some View) -> Self {
-        appending(symbol: Symbol(T.self), block: SlotBlock(block))
+    func appending<T>(builder: @escaping (T) -> some View) -> Self {
+        appending(symbol: Symbol(T.self), builder: SlotBuilder(builder))
     }
 
     func merging(_ other: Self) -> Self {
@@ -27,7 +27,7 @@ public struct SlotStore {
     }
 
     func appending(item: SlotItem) -> Self {
-        appending(symbol: item.symbol, block: item.block)
+        appending(symbol: item.symbol, builder: item.builder)
     }
 
     static var empty: Self {

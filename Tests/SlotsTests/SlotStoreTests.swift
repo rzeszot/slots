@@ -9,11 +9,11 @@ import Testing
         #expect(sut.count == 0)
     }
 
-    @Test func appending_symbol_and_block() {
+    @Test func appending_symbol_and_builder() {
         let sut = SlotStore.empty
             .appending(
                 symbol: Symbol(Foo.self),
-                block: SlotBlock { (foo: Foo) in
+                builder: SlotBuilder { (foo: Foo) in
                     Text(verbatim: foo.parameter)
                 }
             )
@@ -30,7 +30,7 @@ import Testing
         let sut = original.appending(
             item: SlotItem(
                 for: Foo.self,
-                block: { foo in
+                builder: { foo in
                     Text(verbatim: foo.parameter)
                 }
             )

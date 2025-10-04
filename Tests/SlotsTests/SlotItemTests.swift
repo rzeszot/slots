@@ -13,7 +13,6 @@ import Testing
         #expect(sut.symbol.name == "MissingSymbol")
     }
 
-    // MARK: -
     @Test func initializer_some_1() {
         let sut = SlotItem(for: SomeSymbol.self) { _ in }
         #expect(sut.symbol.name == "SomeSymbol")

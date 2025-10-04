@@ -3,7 +3,7 @@ import SwiftUI
 public extension View {
     nonisolated func slot<D>(for _: D.Type, @ViewBuilder builder: @escaping (D) -> some View) -> some View {
         transformEnvironment(\.store) { store in
-            store = store.appending(block: builder)
+            store = store.appending(builder: builder)
         }
     }
 
