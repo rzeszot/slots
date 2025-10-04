@@ -3,30 +3,30 @@
 import PackageDescription
 
 let package = Package(
-    name: "Construct",
+    name: "Slots",
     platforms: [
         .iOS(.v16),
         .macOS(.v13)
     ],
     products: [
         .library(
-            name: "Construct",
+            name: "Slots",
             targets: [
-                "Construct",
+                "Slots",
             ]
         ),
     ],
     targets: [
         .target(
-            name: "Construct",
+            name: "Slots",
             resources: [
                 .process("Resources/Error.xcstrings")
             ]
         ),
         .testTarget(
-            name: "ConstructTests",
+            name: "SlotsTests",
             dependencies: [
-                "Construct",
+                "Slots",
             ]
         ),
     ]

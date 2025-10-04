@@ -1,7 +1,7 @@
 import Foundation
 
-struct Symbol: Hashable, Comparable, Identifiable {
-    let id: ObjectIdentifier
+public struct SlotSymbol: Hashable, Comparable, Identifiable {
+    public let id: ObjectIdentifier
     let name: String
     let type: Any.Type
 
@@ -11,15 +11,15 @@ struct Symbol: Hashable, Comparable, Identifiable {
         type = value
     }
 
-    static func == (lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 
-    static func < (lhs: Self, rhs: Self) -> Bool {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
         lhs.name < rhs.name
     }
 }

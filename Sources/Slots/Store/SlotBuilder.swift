@@ -1,10 +1,10 @@
 import SwiftUI
 
-public struct ConstructBlock {
-    private let build: (Any) -> AnyView
+public struct SlotBuilder {
+    private let block: (Any) -> AnyView
 
     init<Value>(_ block: @escaping (Value) -> some View) {
-        build = { value in
+        self.block = { value in
             if let value = value as? Value {
                 AnyView(block(value))
             } else {
@@ -13,7 +13,7 @@ public struct ConstructBlock {
         }
     }
 
-    public func callAsFunction(_ value: some Any) -> some View {
-        build(value)
+    public func callAsFunction(_ value: Any) -> some View {
+        block(value)
     }
 }

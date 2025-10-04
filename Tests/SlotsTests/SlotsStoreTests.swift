@@ -1,19 +1,19 @@
-@testable import Construct
+@testable import Slots
 import SwiftUI
 import Testing
 
-@Suite struct ConstructStoreTests {
+@Suite struct SlotsStoreTests {
     @Test func initialize_empty() {
-        let sut = ConstructStore.empty
+        let sut = SlotsStore.empty
 
         #expect(sut.count == 0)
     }
 
-    @Test func appending_symbol_and_block() {
-        let sut = ConstructStore.empty
+    @Test func appending_symbol_and_builder() {
+        let sut = SlotsStore.empty
             .appending(
-                symbol: Symbol(Foo.self),
-                block: ConstructBlock { (foo: Foo) in
+                symbol: SlotSymbol(Foo.self),
+                builder: SlotBuilder { (foo: Foo) in
                     Text(verbatim: foo.parameter)
                 }
             )
@@ -26,11 +26,11 @@ import Testing
     }
 
     @Test func appending_item() {
-        let original = ConstructStore.empty
+        let original = SlotsStore.empty
         let sut = original.appending(
-            item: ConstructItem(
+            item: SlotItem(
                 for: Foo.self,
-                block: { foo in
+                builder: { foo in
                     Text(verbatim: foo.parameter)
                 }
             )
@@ -41,7 +41,7 @@ import Testing
     }
 
     @Test func appending_creates_new_instance() {
-        let original = ConstructStore.empty
+        let original = SlotsStore.empty
         let sut = original.appending { (foo: Foo) in
             Text(verbatim: foo.parameter)
         }
@@ -51,8 +51,8 @@ import Testing
     }
 
     @Test func merging() {
-        let lhs = ConstructStore.empty.appending(item: .foo)
-        let rhs = ConstructStore.empty.appending(item: .bar)
+        let lhs = SlotsStore.empty.appending(item: .foo)
+        let rhs = SlotsStore.empty.appending(item: .bar)
 
         let sut = lhs.merging(rhs)
 
@@ -63,8 +63,8 @@ import Testing
     }
 
     @Test func joined() {
-        let lhs = ConstructStore.empty.appending(item: .foo)
-        let rhs = ConstructStore.empty.appending(item: .bar)
+        let lhs = SlotsStore.empty.appending(item: .foo)
+        let rhs = SlotsStore.empty.appending(item: .bar)
 
         let sut = [lhs, rhs].joined()
 
@@ -83,7 +83,7 @@ private struct Bar {
     let parameter: String
 }
 
-private extension ConstructItem {
+private extension SlotItem {
     static var foo: Self {
         .init(for: Foo.self) { foo in
             Text(verbatim: foo.parameter)

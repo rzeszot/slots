@@ -1,29 +1,29 @@
 import SwiftUI
 
-public protocol ConstructExample {
+public protocol SlotExample {
     static var value: Self { get }
 }
 
-extension ConstructExample {
+extension SlotExample {
     @MainActor
     static var view: some View {
-        ConstructView(for: Self.value)
+        SlotView(for: Self.value)
     }
 }
 
-extension Int: ConstructExample {
+extension Int: SlotExample {
     public static var value: Int {
         42
     }
 }
 
-extension String: ConstructExample {
+extension String: SlotExample {
     public static var value: String {
         "Hello world!"
     }
 }
 
-extension MissingSymbol: ConstructExample {
+extension MissingSymbol: SlotExample {
     public static var value: MissingSymbol {
         MissingSymbol(type: String.self)
     }

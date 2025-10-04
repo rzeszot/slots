@@ -1,4 +1,4 @@
-import Construct
+import Slots
 import SwiftUI
 
 struct ProductsListView: View {
