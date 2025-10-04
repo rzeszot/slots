@@ -8,8 +8,8 @@ public struct SlotItem: SlotContent {
         fatalError("SlotItem.body should never be called")
     }
 
-    var store: SlotStore {
-        SlotStore(storage: [symbol: builder])
+    var store: SlotsStore {
+        SlotsStore(storage: [symbol: builder])
     }
 }
 

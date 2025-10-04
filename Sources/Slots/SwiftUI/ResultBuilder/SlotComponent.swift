@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct SlotComponent: SlotContent {
-    let store: SlotStore
+    let store: SlotsStore
 
     public var body: some SlotContent {
         fatalError("SlotComponent.body should never be called")
@@ -9,7 +9,7 @@ public struct SlotComponent: SlotContent {
 }
 
 extension SlotComponent {
-    init(stores: [SlotStore]) {
+    init(stores: [SlotsStore]) {
         self.init(store: stores.joined())
     }
 }

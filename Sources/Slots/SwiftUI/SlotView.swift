@@ -23,7 +23,7 @@ public struct SlotView<T>: View {
 
 public extension SlotView {
     static func maybe(for value: T) -> some View {
-        SlotStoreReader { store in
+        SlotsStoreReader { store in
             if store[T.self] != nil {
                 SlotView(for: value)
             }

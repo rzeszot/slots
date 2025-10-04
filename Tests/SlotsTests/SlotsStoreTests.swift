@@ -2,15 +2,15 @@
 import SwiftUI
 import Testing
 
-@Suite struct SlotStoreTests {
+@Suite struct SlotsStoreTests {
     @Test func initialize_empty() {
-        let sut = SlotStore.empty
+        let sut = SlotsStore.empty
 
         #expect(sut.count == 0)
     }
 
     @Test func appending_symbol_and_builder() {
-        let sut = SlotStore.empty
+        let sut = SlotsStore.empty
             .appending(
                 symbol: SlotSymbol(Foo.self),
                 builder: SlotBuilder { (foo: Foo) in
@@ -26,7 +26,7 @@ import Testing
     }
 
     @Test func appending_item() {
-        let original = SlotStore.empty
+        let original = SlotsStore.empty
         let sut = original.appending(
             item: SlotItem(
                 for: Foo.self,
@@ -41,7 +41,7 @@ import Testing
     }
 
     @Test func appending_creates_new_instance() {
-        let original = SlotStore.empty
+        let original = SlotsStore.empty
         let sut = original.appending { (foo: Foo) in
             Text(verbatim: foo.parameter)
         }
@@ -51,8 +51,8 @@ import Testing
     }
 
     @Test func merging() {
-        let lhs = SlotStore.empty.appending(item: .foo)
-        let rhs = SlotStore.empty.appending(item: .bar)
+        let lhs = SlotsStore.empty.appending(item: .foo)
+        let rhs = SlotsStore.empty.appending(item: .bar)
 
         let sut = lhs.merging(rhs)
 
@@ -63,8 +63,8 @@ import Testing
     }
 
     @Test func joined() {
-        let lhs = SlotStore.empty.appending(item: .foo)
-        let rhs = SlotStore.empty.appending(item: .bar)
+        let lhs = SlotsStore.empty.appending(item: .foo)
+        let rhs = SlotsStore.empty.appending(item: .bar)
 
         let sut = [lhs, rhs].joined()
 

@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct SlotStore {
+public struct SlotsStore {
     let storage: [SlotSymbol: SlotBuilder]
 
     public subscript(_ type: (some Any).Type) -> SlotBuilder? {
@@ -39,8 +39,8 @@ public struct SlotStore {
     }
 }
 
-extension [SlotStore] {
-    func joined() -> SlotStore {
+extension [SlotsStore] {
+    func joined() -> SlotsStore {
         reduce(.empty) { result, store in
             result.merging(store)
         }

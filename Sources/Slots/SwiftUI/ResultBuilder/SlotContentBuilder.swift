@@ -3,7 +3,7 @@ import SwiftUI
 @resultBuilder
 @MainActor
 public struct SlotContentBuilder {
-    let store: SlotStore
+    let store: SlotsStore
 
     init(@SlotContentBuilder content: () -> some SlotContent) {
         let result = content()

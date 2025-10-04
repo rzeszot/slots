@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D8487FA2C594278007AADA5 /* Construct in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8487F92C594278007AADA5 /* Construct */; };
+		2D5402182E91B8D1009E02FA /* Slots in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5402172E91B8D1009E02FA /* Slots */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		2D008B412E57BF02005D90D1 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D8487F72C59425A007AADA5 /* construct */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = construct; path = ..; sourceTree = "<group>"; };
 		2DDAD4CF2C547D4300DFF03F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D8487FA2C594278007AADA5 /* Construct in Frameworks */,
+				2D5402182E91B8D1009E02FA /* Slots in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +52,6 @@
 		2DDAD4C62C547D4300DFF03F = {
 			isa = PBXGroup;
 			children = (
-				2D8487F72C59425A007AADA5 /* construct */,
 				2D3671DF2E21C17E00F825C2 /* Example */,
 				2D008B422E57BF02005D90D1 /* ExampleUITests */,
 				2DDAD4D02C547D4300DFF03F /* Products */,
@@ -120,7 +118,8 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				2D8487F92C594278007AADA5 /* Construct */,
+				2D5401E32E91B876009E02FA /* Slots */,
+				2D5402172E91B8D1009E02FA /* Slots */,
 			);
 			productName = Example;
 			productReference = 2DDAD4CF2C547D4300DFF03F /* Example.app */;
@@ -154,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 2DDAD4C62C547D4300DFF03F;
+			packageReferences = (
+				2D5402162E91B8D1009E02FA /* XCLocalSwiftPackageReference "../../slots" */,
+			);
 			productRefGroup = 2DDAD4D02C547D4300DFF03F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -468,10 +470,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		2D5402162E91B8D1009E02FA /* XCLocalSwiftPackageReference "../../slots" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../slots;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		2D8487F92C594278007AADA5 /* Construct */ = {
+		2D5401E32E91B876009E02FA /* Slots */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Construct;
+			productName = Slots;
+		};
+		2D5402172E91B8D1009E02FA /* Slots */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Slots;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

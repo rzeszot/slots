@@ -1,5 +1,5 @@
 import SwiftUI
 
 extension EnvironmentValues {
-    @Entry var store: SlotStore = .empty
+    @Entry var store: SlotsStore = .empty
 }

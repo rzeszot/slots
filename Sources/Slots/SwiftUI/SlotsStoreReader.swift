@@ -1,12 +1,12 @@
 import SwiftUI
 
-public struct SlotStoreReader<Content: View>: View {
-    private let content: (SlotStore) -> Content
+public struct SlotsStoreReader<Content: View>: View {
+    private let content: (SlotsStore) -> Content
 
     @Environment(\.store)
     var store
 
-    public init(@ViewBuilder content: @escaping (_ store: SlotStore) -> Content) {
+    public init(@ViewBuilder content: @escaping (_ store: SlotsStore) -> Content) {
         self.content = content
     }
 
@@ -16,7 +16,7 @@ public struct SlotStoreReader<Content: View>: View {
 }
 
 #Preview {
-    SlotStoreReader { store in
+    SlotsStoreReader { store in
         Text(store.storage.keys.map(\.name).sorted().joined(separator: ", "))
     }
     .slot(for: Int.self) { value in
