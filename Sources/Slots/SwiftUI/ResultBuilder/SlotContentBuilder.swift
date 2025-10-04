@@ -7,7 +7,7 @@ public struct SlotContentBuilder {
 
     init(@SlotContentBuilder content: () -> some SlotContent) {
         let result = content()
-        let final = result as? SlotComponent
+        let final = result as? SlotItem
         let store = final?.store
 
         self.store = store ?? .empty
@@ -15,25 +15,23 @@ public struct SlotContentBuilder {
 }
 
 public extension SlotContentBuilder {
-    static func buildExpression(_ content: some SlotContent) -> SlotComponent {
+    static func buildExpression(_ content: some SlotContent) -> SlotItem {
         if let item = content as? SlotItem {
-            SlotComponent(store: item.store)
-        } else if let result = content as? SlotComponent {
-            result
+            item
         } else {
             buildExpression(content.body)
         }
     }
 
-    static func buildEither(first component: SlotComponent) -> SlotComponent {
-        component
+    static func buildEither(first item: SlotItem) -> SlotItem {
+        item
     }
 
-    static func buildEither(second component: SlotComponent) -> SlotComponent {
-        component
+    static func buildEither(second item: SlotItem) -> SlotItem {
+        item
     }
 
-    static func buildBlock(_ components: SlotComponent...) -> SlotComponent {
-        SlotComponent(stores: components.map(\.store))
+    static func buildBlock(_ items: SlotItem...) -> SlotItem {
+        SlotItem(stores: items.map(\.store))
     }
 }

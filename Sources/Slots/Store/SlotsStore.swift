@@ -23,7 +23,7 @@ public struct SlotsStore {
     }
 
     func appending(item: SlotItem) -> Self {
-        appending(symbol: item.symbol, builder: item.builder)
+        merging(item.store)
     }
 
     static var empty: Self {

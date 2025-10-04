@@ -3,24 +3,32 @@ import SwiftUI
 import Testing
 
 @Suite struct SlotItemTests {
-    @Test func initializer_missing_1() {
+    @Test func initializer_missing_1() throws {
         let sut = SlotItem.missing { _ in }
-        #expect(sut.symbol.name == "MissingSymbol")
+        let (symbol, _) = try #require(sut.store.storage.first)
+
+        #expect(symbol.name == "MissingSymbol")
     }
 
-    @Test func initializer_missing_2() {
+    @Test func initializer_missing_2() throws {
         let sut = SlotItem.missing {}
-        #expect(sut.symbol.name == "MissingSymbol")
+        let (symbol, _) = try #require(sut.store.storage.first)
+
+        #expect(symbol.name == "MissingSymbol")
     }
 
-    @Test func initializer_some_1() {
+    @Test func initializer_some_1() throws {
         let sut = SlotItem(for: SomeSymbol.self) { _ in }
-        #expect(sut.symbol.name == "SomeSymbol")
+        let (symbol, _) = try #require(sut.store.storage.first)
+
+        #expect(symbol.name == "SomeSymbol")
     }
 
-    @Test func initializer_some_2() {
+    @Test func initializer_some_2() throws {
         let sut = SlotItem(for: SomeSymbol.self) {}
-        #expect(sut.symbol.name == "SomeSymbol")
+        let (symbol, _) = try #require(sut.store.storage.first)
+
+        #expect(symbol.name == "SomeSymbol")
     }
 }
 
