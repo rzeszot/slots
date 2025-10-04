@@ -3,14 +3,6 @@ import SwiftUI
 public struct SlotsStore {
     let storage: [SlotSymbol: SlotBuilder]
 
-    public subscript(_ type: (some Any).Type) -> SlotBuilder? {
-        storage[SlotSymbol(type)]
-    }
-
-    public subscript(_ symbol: SlotSymbol) -> SlotBuilder? {
-        storage[symbol]
-    }
-
     var count: Int {
         storage.count
     }
@@ -36,6 +28,16 @@ public struct SlotsStore {
 
     static var empty: Self {
         Self(storage: [:])
+    }
+}
+
+public extension SlotsStore {
+    subscript(_ type: (some Any).Type) -> SlotBuilder? {
+        storage[SlotSymbol(type)]
+    }
+
+    subscript(_ symbol: SlotSymbol) -> SlotBuilder? {
+        storage[symbol]
     }
 }
 

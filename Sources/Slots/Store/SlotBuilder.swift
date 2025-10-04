@@ -1,19 +1,19 @@
 import SwiftUI
 
 public struct SlotBuilder {
-    private let build: (Any) -> AnyView
+    private let block: (Any) -> AnyView
 
-    init<Value>(_ builder: @escaping (Value) -> some View) {
-        build = { value in
+    init<Value>(_ block: @escaping (Value) -> some View) {
+        self.block = { value in
             if let value = value as? Value {
-                AnyView(builder(value))
+                AnyView(block(value))
             } else {
                 AnyView(ErrorView.cast(to: Value.self))
             }
         }
     }
 
-    public func callAsFunction(_ value: some Any) -> some View {
-        build(value)
+    public func callAsFunction(_ value: Any) -> some View {
+        block(value)
     }
 }
