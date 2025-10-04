@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct SlotItem: SlotContent {
-    let symbol: Symbol
+    let symbol: SlotSymbol
     let builder: SlotBuilder
 
     public var body: some SlotContent {
@@ -15,7 +15,7 @@ public struct SlotItem: SlotContent {
 
 public extension SlotItem {
     init<T>(for symbol: T.Type, @ViewBuilder builder: @escaping (_ symbol: T) -> some View) {
-        self.init(symbol: Symbol(symbol), builder: SlotBuilder(builder))
+        self.init(symbol: SlotSymbol(symbol), builder: SlotBuilder(builder))
     }
 
     init(for symbol: (some Any).Type, @ViewBuilder builder: @escaping () -> some View) {

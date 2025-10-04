@@ -1,24 +1,28 @@
 import SwiftUI
 
 public struct SlotStore {
-    let storage: [Symbol: SlotBuilder]
+    let storage: [SlotSymbol: SlotBuilder]
 
     public subscript(_ type: (some Any).Type) -> SlotBuilder? {
-        storage[Symbol(type)]
+        storage[SlotSymbol(type)]
+    }
+
+    public subscript(_ symbol: SlotSymbol) -> SlotBuilder? {
+        storage[symbol]
     }
 
     var count: Int {
         storage.count
     }
 
-    func appending(symbol: Symbol, builder: SlotBuilder) -> Self {
+    func appending(symbol: SlotSymbol, builder: SlotBuilder) -> Self {
         var copy = storage
         copy[symbol] = builder
         return Self(storage: copy)
     }
 
     func appending<T>(builder: @escaping (T) -> some View) -> Self {
-        appending(symbol: Symbol(T.self), builder: SlotBuilder(builder))
+        appending(symbol: SlotSymbol(T.self), builder: SlotBuilder(builder))
     }
 
     func merging(_ other: Self) -> Self {

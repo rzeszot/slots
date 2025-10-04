@@ -4,7 +4,7 @@ public struct SlotInspectorView: View {
     @Environment(\.store)
     private var store
 
-    private var items: [Symbol] {
+    private var items: [SlotSymbol] {
         store.storage.keys.sorted()
     }
 

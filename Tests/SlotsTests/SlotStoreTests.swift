@@ -12,7 +12,7 @@ import Testing
     @Test func appending_symbol_and_builder() {
         let sut = SlotStore.empty
             .appending(
-                symbol: Symbol(Foo.self),
+                symbol: SlotSymbol(Foo.self),
                 builder: SlotBuilder { (foo: Foo) in
                     Text(verbatim: foo.parameter)
                 }
