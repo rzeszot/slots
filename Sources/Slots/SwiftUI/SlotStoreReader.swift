@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct SlotStoreReader<Content: View>: View {
+public struct SlotStoreReader<Content: View>: View {
     private let content: (SlotStore) -> Content
 
     @Environment(\.store)
     var store
 
-    init(@ViewBuilder content: @escaping (_ store: SlotStore) -> Content) {
+    public init(@ViewBuilder content: @escaping (_ store: SlotStore) -> Content) {
         self.content = content
     }
 
-    var body: some View {
+    public var body: some View {
         content(store)
     }
 }
