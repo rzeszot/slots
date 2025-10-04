@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct ConstructView<T>: View {
+public struct SlotView<T>: View {
     private let value: T
 
     @Environment(\.store)
@@ -16,16 +16,16 @@ public struct ConstructView<T>: View {
         } else if let value = value as? MissingSymbol {
             ErrorView.missing(for: value.type)
         } else {
-            ConstructView<MissingSymbol>(for: MissingSymbol(type: T.self))
+            SlotView<MissingSymbol>(for: MissingSymbol(type: T.self))
         }
     }
 }
 
-public extension ConstructView {
+public extension SlotView {
     static func maybe(for value: T) -> some View {
-        ConstructStoreReader { store in
+        SlotStoreReader { store in
             if store[T.self] != nil {
-                ConstructView(for: value)
+                SlotView(for: value)
             }
         }
     }
@@ -35,14 +35,14 @@ public extension ConstructView {
 //    @Previewable @State var value = true
 //
 //    let content = VStack {
-//        Toggle("construct", isOn: $value)
-//        ConstructView.maybe(for: 42)
+//        Toggle("slot", isOn: $value)
+//        SlotView.maybe(for: 42)
 //    }
 //    .padding()
 //
 //    if value {
 //        content
-//            .construct(for: Int.self) { value in
+//            .slot(for: Int.self) { value in
 //                Text("Int: \(value)")
 //            }
 //    } else {
@@ -51,20 +51,20 @@ public extension ConstructView {
 //}
 
 #Preview {
-    ConstructView(for: 42)
-        .construct {
-            ConstructItem.missing { missing in
+    SlotView(for: 42)
+        .slot {
+            SlotItem.missing { missing in
                 Text("Missing \(String(describing: missing.type))")
             }
-            ConstructItem(for: Int.self) { value in
+            SlotItem(for: Int.self) { value in
                 Text("Value \(String(describing: value))")
             }
         }
 }
 
 #Preview {
-    ConstructView(for: 42)
-        .construct(for: Int.self) { value in
+    SlotView(for: 42)
+        .slot(for: Int.self) { value in
             Text("Int(\(value))")
         }
 }

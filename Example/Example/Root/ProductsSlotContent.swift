@@ -1,9 +1,9 @@
-import Construct
+import Slots
 import SwiftUI
 
-struct ProductsConstructContent: ConstructContent {
-    var body: some ConstructContent {
-        ConstructItem(for: ProductsSymbol.self) { placeholder in
+struct ProductsSlotContent: SlotContent {
+    var body: some SlotContent {
+        SlotItem(for: ProductsSymbol.self) { placeholder in
             switch placeholder {
             case .list:
                 ProductsRootView()

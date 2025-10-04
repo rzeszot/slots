@@ -1,14 +1,14 @@
-@testable import Construct
+@testable import Slots
 import SwiftUI
 import Testing
 
-@Suite @MainActor struct ConstructContentBuilderTests {
+@Suite @MainActor struct SlotContentBuilderTests {
     @Test func example_1() {
-        let sut = ConstructContentBuilder {
-            ConstructItem(for: Foo.self) { foo in
+        let sut = SlotContentBuilder {
+            SlotItem(for: Foo.self) { foo in
                 Text(String(describing: foo))
             }
-            ConstructItem(for: Bar.self) { bar in
+            SlotItem(for: Bar.self) { bar in
                 Text(String(describing: bar))
             }
         }
@@ -20,7 +20,7 @@ import Testing
     }
 
     @Test func example_2() {
-        let sut = ConstructContentBuilder {
+        let sut = SlotContentBuilder {
             BazItem()
         }
 
@@ -31,7 +31,7 @@ import Testing
     }
 
     @Test func example_if_first() {
-        let sut = ConstructContentBuilder {
+        let sut = SlotContentBuilder {
             if true {
                 FooItem()
             } else {
@@ -46,7 +46,7 @@ import Testing
     }
 
     @Test func example_if_second() {
-        let sut = ConstructContentBuilder {
+        let sut = SlotContentBuilder {
             if false {
                 FooItem()
             } else {
@@ -61,7 +61,7 @@ import Testing
     }
 
     @Test func example_empty() {
-        let sut = ConstructContentBuilder {
+        let sut = SlotContentBuilder {
 
         }
         #expect(sut.store.count == 0)
@@ -83,17 +83,17 @@ private enum Baz {
     case baz2
 }
 
-private struct FooItem: ConstructContent {
-    var body: some ConstructContent {
-        ConstructItem(for: Foo.self) { foo in
+private struct FooItem: SlotContent {
+    var body: some SlotContent {
+        SlotItem(for: Foo.self) { foo in
             Text(String(describing: foo))
         }
     }
 }
 
-private struct BazItem: ConstructContent {
-    var body: some ConstructContent {
-        ConstructItem(for: Baz.self) { baz in
+private struct BazItem: SlotContent {
+    var body: some SlotContent {
+        SlotItem(for: Baz.self) { baz in
             Text(String(describing: baz))
         }
     }

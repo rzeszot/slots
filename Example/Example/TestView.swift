@@ -1,4 +1,4 @@
-import Construct
+import Slots
 import SwiftUI
 
 struct TestView: View {
@@ -23,7 +23,7 @@ struct TestView: View {
 
         var body: some View {
             VStack {
-                ConstructView(for: MissingPlaceholder(value: 42))
+                SlotView(for: MissingPlaceholder(value: 42))
             }
             .navigationTitle("Missing Value")
         }
@@ -36,9 +36,9 @@ struct TestView: View {
 
         var body: some View {
             VStack {
-                ConstructView(for: PresentPlaceholder(value: 42))
+                SlotView(for: PresentPlaceholder(value: 42))
             }
-            .construct(for: PresentPlaceholder.self) { placeholder in
+            .slot(for: PresentPlaceholder.self) { placeholder in
                 ZStack {
                     Color.yellow
                     Text("present \(placeholder.value) present")

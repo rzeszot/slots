@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct ConstructStoreReader<Content: View>: View {
-    private let content: (ConstructStore) -> Content
+struct SlotStoreReader<Content: View>: View {
+    private let content: (SlotStore) -> Content
 
     @Environment(\.store)
     var store
 
-    init(@ViewBuilder content: @escaping (_ store: ConstructStore) -> Content) {
+    init(@ViewBuilder content: @escaping (_ store: SlotStore) -> Content) {
         self.content = content
     }
 
@@ -16,13 +16,13 @@ struct ConstructStoreReader<Content: View>: View {
 }
 
 #Preview {
-    ConstructStoreReader { store in
+    SlotStoreReader { store in
         Text(store.storage.keys.map(\.name).sorted().joined(separator: ", "))
     }
-    .construct(for: Int.self) { value in
+    .slot(for: Int.self) { value in
         Text("Int: \(value)")
     }
-    .construct(for: String.self) { value in
+    .slot(for: String.self) { value in
         Text("String: \(value)")
     }
 }

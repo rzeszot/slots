@@ -1,21 +1,21 @@
 import SwiftUI
 
-public struct ConstructItem: ConstructContent {
+public struct SlotItem: SlotContent {
     let symbol: Symbol
-    let block: ConstructBlock
+    let block: SlotBlock
 
-    public var body: some ConstructContent {
-        fatalError("ConstructItem.body should never be called")
+    public var body: some SlotContent {
+        fatalError("SlotItem.body should never be called")
     }
 
-    var store: ConstructStore {
-        ConstructStore(storage: [symbol: block])
+    var store: SlotStore {
+        SlotStore(storage: [symbol: block])
     }
 }
 
-public extension ConstructItem {
+public extension SlotItem {
     init<T>(for symbol: T.Type, @ViewBuilder block: @escaping (_ symbol: T) -> some View) {
-        self.init(symbol: Symbol(symbol), block: ConstructBlock(block))
+        self.init(symbol: Symbol(symbol), block: SlotBlock(block))
     }
 
     init(for symbol: (some Any).Type, @ViewBuilder block: @escaping () -> some View) {
